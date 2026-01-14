@@ -2,9 +2,11 @@
 
 # GET SHIT DONE
 
-**A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code by TÂCHES.**
+**A light-weight and powerful meta-prompting, context engineering and spec-driven development system for Claude Code and OpenCode by TÂCHES.**
 
 **Solves context rot — the quality degradation that happens as Claude fills its context window.**
+
+**✨ Now supports OpenCode with enhanced agentic AI capabilities!**
 
 [![npm version](https://img.shields.io/npm/v/get-shit-done-cc?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/get-shit-done-cc)
 [![npm downloads](https://img.shields.io/npm/dm/get-shit-done-cc?style=for-the-badge&logo=npm&logoColor=white&color=CB3837)](https://www.npmjs.com/package/get-shit-done-cc)
@@ -35,7 +37,7 @@ npx get-shit-done-cc
 
 **Trusted by engineers at Amazon, Google, Shopify, and Webflow.**
 
-[Why I Built This](#why-i-built-this) · [How It Works](#how-it-works) · [Commands](#commands) · [Why It Works](#why-it-works)
+[Why I Built This](#why-i-built-this) · [How It Works](#how-it-works) · [Commands](#commands) · [OpenCode Support](docs/opencode.md) · [Why It Works](#why-it-works)
 
 </div>
 
@@ -75,17 +77,26 @@ People who want to describe what they want and have it built correctly — witho
 npx get-shit-done-cc
 ```
 
-That's it. Verify with `/gsd:help` inside your Claude Code interface.
+That's it. GSD auto-detects your editor (Claude Code or OpenCode) and installs the appropriate integration.
+
+- **Claude Code**: Verify with `/gsd:help` in the slash command interface
+- **OpenCode**: Use `Ctrl+Shift+G, Ctrl+Shift+H` or the command palette
 
 <details>
 <summary><strong>Non-interactive Install (Docker, CI, Scripts)</strong></summary>
 
 ```bash
-npx get-shit-done-cc --global   # Install to ~/.claude/
-npx get-shit-done-cc --local    # Install to ./.claude/
+# Auto-detect editor
+npx get-shit-done-cc --global   # Install globally (Claude: ~/.claude/, OpenCode: ~/.opencode/)
+npx get-shit-done-cc --local    # Install locally (Claude: ./.claude/, OpenCode: ./.opencode/)
+
+# Force specific editor
+npx get-shit-done-cc --global --editor opencode    # Force OpenCode
+npx get-shit-done-cc --global --editor claude      # Force Claude Code
 ```
 
 Use `--global` (`-g`) or `--local` (`-l`) to skip the interactive prompt.
+Use `--editor` (`-e`) to force installation for a specific editor.
 
 </details>
 
@@ -290,6 +301,8 @@ GSD prevents this. Each plan is maximum 3 tasks. Each plan runs in a fresh subag
 
 No degradation. Walk away, come back to completed work.
 
+**OpenCode Enhancement**: When using OpenCode, GSD leverages specialized AI agents for code generation, debugging, testing, and documentation, providing even more powerful automation.
+
 ### Atomic Git Commits
 
 Each task gets its own commit immediately after completion:
@@ -355,12 +368,23 @@ You're never locked in. The system adapts.
 ## Troubleshooting
 
 **Commands not found after install?**
-- Restart Claude Code to reload slash commands
-- Verify files exist in `~/.claude/commands/gsd/` (global) or `./.claude/commands/gsd/` (local)
+- **Claude Code**: Restart Claude Code to reload slash commands
+- **OpenCode**: Restart OpenCode and check that the GSD extension is loaded
+- Verify files exist:
+  - Claude: `~/.claude/commands/gsd/` (global) or `./.claude/commands/gsd/` (local)
+  - OpenCode: `~/.opencode/extensions/gsd-opencode/` (global) or `./.opencode/extensions/gsd-opencode/` (local)
 
 **Commands not working as expected?**
-- Run `/gsd:help` to verify installation
+- Run `/gsd:help` (Claude) or `opencode.gsd.help` (OpenCode) to verify installation
 - Re-run `npx get-shit-done-cc` to reinstall
+- Check that you're using the correct command format for your editor
+
+**Editor not detected correctly?**
+```bash
+# Force installation for specific editor
+npx get-shit-done-cc --global --editor opencode
+npx get-shit-done-cc --global --editor claude
+```
 
 **Updating to the latest version?**
 ```bash
@@ -369,11 +393,18 @@ npx get-shit-done-cc@latest
 
 **Using Docker or containerized environments?**
 
-If file reads fail with tilde paths (`~/.claude/...`), set `CLAUDE_CONFIG_DIR` before installing:
+If file reads fail with tilde paths, set the appropriate config directory before installing:
 ```bash
+# For Claude Code
 CLAUDE_CONFIG_DIR=/home/youruser/.claude npx get-shit-done-cc --global
+
+# For OpenCode
+OPENCODE_CONFIG_DIR=/home/youruser/.opencode npx get-shit-done-cc --global --editor opencode
 ```
 This ensures absolute paths are used instead of `~` which may not expand correctly in containers.
+
+**OpenCode-specific issues?**
+See the [OpenCode documentation](docs/opencode.md) for detailed troubleshooting.
 
 ---
 
@@ -397,6 +428,6 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 <div align="center">
 
-**Claude Code is powerful. GSD makes it reliable.**
+**Claude Code and OpenCode are powerful. GSD makes them reliable.**
 
 </div>
