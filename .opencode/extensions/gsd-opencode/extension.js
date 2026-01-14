@@ -205,8 +205,6 @@ class GSDCommandHandler {
 
     if (process.trim()) {
       outputChannel.appendLine('📋 MANUAL EXECUTION STEPS:');
-      console.log('Debug: Raw process content before appending:');
-      console.log(process.trim());
       outputChannel.appendLine(process.trim());
     }
   }
