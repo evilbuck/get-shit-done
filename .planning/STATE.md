@@ -1,111 +1,73 @@
 # Project State
 
-## Project Summary
+## Project Reference
 
-**Building:** Brownfield support for GSD - `/gsd:map-codebase` workflow that analyzes existing codebases using parallel Explore agents, producing structured `.planning/codebase/` documents.
+See: .planning/PROJECT.md (updated 2026-01-14)
 
-**Core requirements:**
-- `/gsd:map-codebase` produces useful codebase documents from any codebase
-- Documents are focused (<100 lines each) and easy to update incrementally
-- `/gsd:new-project` detects existing code and offers mapping
-- `/gsd:plan-phase` loads relevant codebase context automatically
-- Codebase map updates after plan execution
-
-**Constraints:**
-- Explore agents required for initial mapping
-- Each codebase map file must stay under ~100 lines
-- Only load relevant codebase sections into phase planning
-- Follow existing GSD command/workflow/template patterns
+**Core value:** Full feature parity on OpenCode — every GSD command works identically on both agent platforms.
+**Current focus:** Phase 4 — Validation
 
 ## Current Position
 
-Phase: 12 of 12 (Changelog & Update Awareness)
-Plan: 2 of 3 in current phase (12-02 may be running in parallel)
-Status: In progress
-Last activity: 2026-01-14 - Completed 12-03-PLAN.md
+Phase: 4 of 4 (Validation) — COMPLETE
+Plan: 2 of 2 in current phase
+Status: Phase complete
+Last activity: 2026-01-14 — Completed 04-02-PLAN.md
 
-Progress: █████████████████████░░░ 25/27 plans (~93%)
+Progress: ██████████ 100%
 
 ## Performance Metrics
 
 **Velocity:**
-- Total plans completed: 23
-- Average duration: 3.7 min
-- Total execution time: 85 min
+- Total plans completed: 5
+- Average duration: 8 min
+- Total execution time: 41 min
 
 **By Phase:**
 
 | Phase | Plans | Total | Avg/Plan |
 |-------|-------|-------|----------|
-| 1 | 3 | 9 min | 3 min |
-| 2 | 2 | 5 min | 2.5 min |
-| 3 | 1 | 2 min | 2 min |
-| 4 | 2 | 7 min | 3.5 min |
-| 5 | 2 | 5 min | 2.5 min |
-| 6 | 2 | 4 min | 2 min |
-| 7 | 1 | 4 min | 4 min |
-| 8 | 1 | 1 min | 1 min |
-| 9 | 1 | 3 min | 3 min |
-| 10 | 4 | 33 min | 8.3 min |
-| 11 | 4 | 12 min | 3 min |
-| 99 | 3 | 1 min | <1 min (parallel) |
+| 1 | 1/1 | 12 min | 12 min |
+| 2 | 1/1 | 8 min | 8 min |
+| 3 | 1/1 | 15 min | 15 min |
+| 4 | 2/2 | 6 min | 3 min |
 
 **Recent Trend:**
-- Last 5 plans: 11-02 (2m), 11-03 (3m), 11-04 (3m), 99-01/02/03 (<1m parallel)
-- Trend: Parallel execution dramatically faster
-
-*Updated after each plan completion*
+- Last 5 plans: 01-01 (12m), 02-01 (8m), 03-01 (15m), 04-01 (2m), 04-02 (4m)
+- Trend: Validation phase completed very quickly with documentation tasks
 
 ## Accumulated Context
 
-### Decisions Made
+### Decisions
 
-| Phase | Decision | Rationale |
-|-------|----------|-----------|
-| 0 | Folder with focused files | Easier to update incrementally than monolithic file |
-| 0 | Update after plan execution | Fits existing STATE.md update pattern |
-| 0 | Parallel Explore agents | Thoroughness for initial mapping |
-| 0 | Selective context loading | Avoid loading irrelevant sections |
-| 6 | Frontmatter with dependency graph | Enable automatic context assembly via transitive closure |
-| 6 | Intelligent summary selection | Scan frontmatter, build graph, auto-select relevant phases |
-| 8 | Active milestone details in ROADMAP.md | Single source of truth during development, archive only on completion |
-| 9 | Phase-scoped UAT issues | Keep UAT findings tied to specific plan, not global ISSUES.md |
-| 10 | git mv preserves history | Rename workflow while keeping git history intact |
-| 10 | execute-plan = single, execute-phase = parallel | Clear naming for single-plan vs multi-plan execution |
-| 10 | Agent-history v1.2 schema | Extended for parallel tracking, dependencies, resume support |
-| 11 | Frontmatter parallelization markers | parallelizable, depends_on, files_exclusive in plan template |
-| 11 | Vertical slices over workflow stages | Maximize independence when parallelization enabled |
-| 11 | SUMMARY references only when needed | Avoid reflexive sequential chains |
+Decisions are logged in PROJECT.md Key Decisions table.
+Recent decisions affecting current work:
+
+- Support only Claude Code + OpenCode (v1 focus)
+- Pure port, no new features
+- **Claude Code as source of truth, transform at install time** (01-01)
+- **No separate directories per platform** (01-01)
+- **Transform at install time, not in source repo** (02-01) — installer detects platform and applies transformations
+
+### Key Findings (Phase 1)
+
+- OpenCode uses `.opencode/command/` and `.opencode/agent/`
+- Frontmatter: remove `name`, `argument-hint`, `allowed-tools`
+- Tool names mostly identical
+- `$ARGUMENTS` and `@path` work the same
+- OpenCode has explicit agent system (vs Claude Code Task tool)
 
 ### Deferred Issues
 
 None yet.
 
-### Blockers/Concerns Carried Forward
+### Blockers/Concerns
 
-None yet.
-
-### Roadmap Evolution
-
-- Phase 4 added: Plan-phase optimizations (~37% context reduction target)
-- Phase 5 added: TDD instructions for appropriate test-driven development
-- Phase 6 added: Frontmatter and related system upgrade
-- Phase 7 added: Backfill existing summaries with frontmatter
-- Phase 8 added: Improve roadmap system
-- Phase 9 added: Integrate verify-work (community contribution from OracleGreyBeard)
-- Phase 10 added: Parallel phase execution (rename workflow, create /gsd:execute-phase with parallelization)
-- Phase 11 added: Parallel-aware planning (update plan-phase.md to create parallelizable plans when enabled)
-- Phase 12 added: Changelog & update awareness (remote changelog fetch, /gsd:whats-new, publish workflow integration)
-
-## Project Alignment
-
-Last checked: Project start
-Status: ✓ Aligned
-Assessment: No work done yet - baseline alignment.
-Drift notes: None
+- OpenCode agent visibility bug (custom agents may not Tab-cycle)
+- YAML parsing crash with unquoted values in commands
 
 ## Session Continuity
 
 Last session: 2026-01-14
-Stopped at: Completed 12-03-PLAN.md
+Stopped at: Phase 4 complete - all validation and documentation finished
 Resume file: None
