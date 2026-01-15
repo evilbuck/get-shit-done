@@ -37,7 +37,7 @@ domain: [optional]          # Domain skill if loaded
 | `autonomous` | Yes | `true` if no checkpoints, `false` if has checkpoints |
 | `domain` | No | Domain skill if loaded (e.g., `next-js`) |
 
-**Wave is pre-computed:** `/gsd:plan-phase` assigns wave numbers based on `depends_on`. `/gsd:execute-phase` reads `wave` directly from frontmatter and groups plans by wave number. No runtime dependency analysis needed.
+**Wave is pre-computed:** `/gsd/plan-phase` assigns wave numbers based on `depends_on`. `/gsd/execute-phase` reads `wave` directly from frontmatter and groups plans by wave number. No runtime dependency analysis needed.
 
 **Checkpoint handling:** Plans with `autonomous: false` require user interaction. They run in their assigned wave but pause at checkpoints.
 </frontmatter>
@@ -63,10 +63,10 @@ Output: [...]
 </objective>
 
 <execution_context>
-@.opencode/gsd:workflows/execute-plan.md
-@.opencode/gsd:templates/summary.md
+@~/.config/opencode/gsd/workflows/execute-plan.md
+@~/.config/opencode/gsd/templates/summary.md
 [If checkpoints exist:]
-@.opencode/gsd:references/checkpoints.md
+@~/.config/opencode/gsd/references/checkpoints.md
 </execution_context>
 
 <context>

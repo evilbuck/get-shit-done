@@ -1,7 +1,7 @@
 # Debug Subagent Prompt Template
 
 Template for spawning debug investigation agents. Used by:
-- `/gsd:debug` — Interactive debugging (find and offer to fix)
+- `/gsd/debug` — Interactive debugging (find and offer to fix)
 - `diagnose-issues` — UAT parallel diagnosis (find root cause only)
 
 The `goal` flag determines behavior after root cause is found.
@@ -21,11 +21,11 @@ Symptoms are pre-filled. Skip symptom gathering, start investigating immediately
 </objective>
 
 <execution_context>
-@.opencode/gsd:workflows/debug.md
-@.opencode/gsd:templates/DEBUG.md
-@.opencode/gsd:references/debugging/debugging-mindset.md
-@.opencode/gsd:references/debugging/hypothesis-testing.md
-@.opencode/gsd:references/debugging/investigation-techniques.md
+@~/.config/opencode/gsd/workflows/debug.md
+@~/.config/opencode/gsd/templates/DEBUG.md
+@~/.config/opencode/gsd/references/debugging/debugging-mindset.md
+@~/.config/opencode/gsd/references/debugging/hypothesis-testing.md
+@~/.config/opencode/gsd/references/debugging/investigation-techniques.md
 </execution_context>
 
 <symptoms>
@@ -47,7 +47,7 @@ Start directly at investigation_loop.
 **goal: {goal}**
 
 - `find_root_cause_only` — Diagnose but do NOT fix. Return root cause to orchestrator. Used by UAT diagnosis flow where plan-fix handles the fix.
-- `find_and_fix` — Find root cause, then fix and verify. Used by interactive /gsd:debug where user wants immediate resolution.
+- `find_and_fix` — Find root cause, then fix and verify. Used by interactive /gsd/debug where user wants immediate resolution.
 </mode>
 
 <debug_file>
@@ -289,7 +289,7 @@ If ELIMINATED:
 
 ## Usage by Orchestrator
 
-**From /gsd:debug (interactive):**
+**From /gsd/debug (interactive):**
 
 ```python
 Task(
@@ -339,9 +339,9 @@ Read this file first - it contains all evidence gathered so far.
 </mode>
 
 <execution_context>
-@.opencode/gsd:workflows/debug.md
-@.opencode/gsd:templates/DEBUG.md
-@.opencode/gsd:references/debugging/debugging-mindset.md
+@~/.config/opencode/gsd/workflows/debug.md
+@~/.config/opencode/gsd/templates/DEBUG.md
+@~/.config/opencode/gsd/references/debugging/debugging-mindset.md
 </execution_context>
 
 <instructions>

@@ -38,15 +38,15 @@ Ask about experience. Investigate the cause yourself.
 </philosophy>
 
 <references>
-@.opencode/gsd:references/debugging/debugging-mindset.md
-@.opencode/gsd:references/debugging/hypothesis-testing.md
-@.opencode/gsd:references/debugging/investigation-techniques.md
-@.opencode/gsd:references/debugging/verification-patterns.md
-@.opencode/gsd:references/debugging/when-to-research.md
+@~/.config/opencode/gsd/references/debugging/debugging-mindset.md
+@~/.config/opencode/gsd/references/debugging/hypothesis-testing.md
+@~/.config/opencode/gsd/references/debugging/investigation-techniques.md
+@~/.config/opencode/gsd/references/debugging/verification-patterns.md
+@~/.config/opencode/gsd/references/debugging/when-to-research.md
 </references>
 
 <template>
-@.opencode/gsd:templates/DEBUG.md
+@~/.config/opencode/gsd/templates/DEBUG.md
 </template>
 
 <checkpoint_behavior>
@@ -475,7 +475,7 @@ If ELIMINATED:
 
 After significant investigation (5+ evidence entries), check if context is heavy.
 If so, ensure Current Focus is fully updated and suggest:
-"Context filling up. Safe to /clear - run /gsd:debug to resume."
+"Context filling up. Safe to /clear - run /gsd/debug to resume."
 </step>
 
 <step name="resume_from_file">
@@ -544,7 +544,7 @@ If unable to determine root cause after thorough investigation:
 **Debug Session:** {path to debug file}
 ```
 
-**Do NOT proceed to fix_and_verify.** The fix will be planned by /gsd:plan-fix using this diagnosis.
+**Do NOT proceed to fix_and_verify.** The fix will be planned by /gsd/plan-fix using this diagnosis.
 </step>
 
 <step name="fix_and_verify">
@@ -629,7 +629,7 @@ Use AskUserQuestion:
 - header: "Next"
 - question: "What now?"
 - options:
-  - "Continue working" - Back to /gsd:progress
+  - "Continue working" - Back to /gsd/progress
   - "Test more" - Verify related functionality
   - "Done" - End session
 </step>

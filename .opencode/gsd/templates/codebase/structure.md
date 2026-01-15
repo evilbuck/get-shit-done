@@ -145,7 +145,7 @@ get-shit-done/
 - Key files: install.js - handles npx installation
 - Subdirectories: None
 
-**commands/gsd:**
+**commands/gsd/**
 - Purpose: Slash command definitions for Claude Code
 - Contains: *.md files (one per command)
 - Key files: new-project.md, plan-phase.md, execute-plan.md
@@ -206,7 +206,7 @@ get-shit-done/
 ## Where to Add New Code
 
 **New Slash Command:**
-- Primary code: `commands/gsd:{command-name}.md`
+- Primary code: `commands/gsd/{command-name}.md`
 - Tests: `tests/commands/{command-name}.test.js` (if testing implemented)
 - Documentation: Update `README.md` with new command
 
@@ -216,7 +216,7 @@ get-shit-done/
 
 **New Workflow:**
 - Implementation: `get-shit-done/workflows/{name}.md`
-- Usage: Reference from command with `@.opencode/gsd:workflows/{name}.md`
+- Usage: Reference from command with `@~/.config/opencode/gsd/workflows/{name}.md`
 
 **New Reference Document:**
 - Implementation: `get-shit-done/references/{name}.md`
@@ -234,7 +234,7 @@ get-shit-done/
 - Committed: Yes (source of truth)
 
 **commands/**
-- Purpose: Slash commands installed to .opencode/command/
+- Purpose: Slash commands installed to ~/.config/opencode/command/
 - Source: Copied by bin/install.js during installation
 - Committed: Yes (source of truth)
 

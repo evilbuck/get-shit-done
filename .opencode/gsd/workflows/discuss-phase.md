@@ -42,7 +42,7 @@ fi
 ```
 Error: Phase ${PHASE} not found in roadmap.
 
-Use /gsd:progress to see available phases.
+Use /gsd/progress to see available phases.
 ```
 
 Exit workflow.
@@ -151,7 +151,7 @@ Loop until "Create CONTEXT.md" selected.
 <step name="write_context">
 Create CONTEXT.md capturing the user's vision.
 
-Use template from .opencode/gsd:templates/context.md
+Use template from ~/.config/opencode/gsd/templates/context.md
 
 **File location:** `.planning/phases/${PHASE}-${SLUG}/${PHASE}-CONTEXT.md`
 
@@ -190,14 +190,14 @@ Created: .planning/phases/${PHASE}-${SLUG}/${PHASE}-CONTEXT.md
 
 **Phase ${PHASE}: [Name]** — [Goal from ROADMAP.md]
 
-`/gsd:plan-phase ${PHASE}`
+`/gsd/plan-phase ${PHASE}`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/gsd:research-phase ${PHASE}` — investigate unknowns
+- `/gsd/research-phase ${PHASE}` — investigate unknowns
 - Review/edit CONTEXT.md before continuing
 
 ---

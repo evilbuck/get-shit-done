@@ -26,7 +26,7 @@ With diagnosis: "Comment doesn't refresh" → "useEffect missing dependency" →
 <step name="parse_issues">
 **Extract issues from UAT.md:**
 
-Read the "Issues for /gsd:plan-fix" section:
+Read the "Issues for /gsd/plan-fix" section:
 ```
 - UAT-001: Comment doesn't appear until refresh (major) - Test 2
 - UAT-002: Reply button position wrong (minor) - Test 5
@@ -148,10 +148,10 @@ root_cause: "useEffect in CommentList.tsx missing commentCount dependency - does
 debug_session: ${DEBUG_DIR}/comment-not-refreshing.md
 ```
 
-Update the "Issues for /gsd:plan-fix" section with root causes:
+Update the "Issues for /gsd/plan-fix" section with root causes:
 
 ```markdown
-## Issues for /gsd:plan-fix
+## Issues for /gsd/plan-fix
 
 - UAT-001: Comment doesn't appear until refresh (major) - Test 2
   root_cause: useEffect missing dependency in CommentList.tsx
@@ -187,7 +187,7 @@ Debug sessions saved to ${DEBUG_DIR}/
 ---
 
 Next steps:
-- `/gsd:plan-fix {phase}` — Create fix plan with root causes
+- `/gsd/plan-fix {phase}` — Create fix plan with root causes
 - Review debug sessions for details
 ```
 </step>
@@ -198,7 +198,7 @@ Next steps:
 ```
 Root causes identified. Ready to plan fixes?
 
-`/gsd:plan-fix {phase}`
+`/gsd/plan-fix {phase}`
 
 The fix plan will use diagnosed root causes for targeted fixes.
 ```
@@ -232,7 +232,7 @@ The fix plan will use diagnosed root causes for targeted fixes.
 
 **Agent times out:**
 - Check DEBUG-UAT-{NNN}.md for partial progress
-- Can resume with /gsd:debug
+- Can resume with /gsd/debug
 
 **All agents fail:**
 - Something systemic (permissions, git, etc.)

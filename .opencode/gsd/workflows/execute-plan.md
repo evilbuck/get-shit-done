@@ -938,7 +938,7 @@ After TDD plan completion, ensure:
 - Standard plans: Multiple tasks, 1 commit per task, 2-4 commits total
 - TDD plans: Single feature, 2-3 commits for RED/GREEN/REFACTOR cycle
 
-See `.opencode/gsd:references/tdd.md` for TDD plan structure.
+See `~/.config/opencode/gsd/references/tdd.md` for TDD plan structure.
 </tdd_plan_execution>
 
 <task_commit>
@@ -1109,7 +1109,7 @@ I'll verify after: [verification]
 - If verification passes or N/A: continue to next task
 - If verification fails: inform user, wait for resolution
 
-See .opencode/gsd:references/checkpoints.md for complete checkpoint guidance.
+See ~/.config/opencode/gsd/references/checkpoints.md for complete checkpoint guidance.
 </step>
 
 <step name="checkpoint_return_for_orchestrator">
@@ -1120,7 +1120,7 @@ If you were spawned via Task tool and hit a checkpoint, you cannot directly inte
 **Return format for checkpoints:**
 
 Use the structured format from:
-@.opencode/gsd:templates/checkpoint-return.md
+@~/.config/opencode/gsd/templates/checkpoint-return.md
 
 **Required in your return:**
 
@@ -1184,7 +1184,7 @@ You will NOT be resumed. A new agent continues from where you stopped, using you
 
 **How to know if you were spawned:**
 
-If you're reading this workflow because an orchestrator spawned you (vs running directly from /gsd:execute-plan), the orchestrator's prompt will include checkpoint return instructions. Follow those instructions when you hit a checkpoint.
+If you're reading this workflow because an orchestrator spawned you (vs running directly from /gsd/execute-plan), the orchestrator's prompt will include checkpoint return instructions. Follow those instructions when you hit a checkpoint.
 
 **If running in main context (not spawned):**
 
@@ -1246,7 +1246,7 @@ grep -A 50 "^user_setup:" .planning/phases/XX-name/{phase}-{plan}-PLAN.md | head
 
 **If user_setup exists and is not empty:**
 
-Create `.planning/phases/XX-name/{phase}-USER-SETUP.md` using template from `.opencode/gsd:templates/user-setup.md`.
+Create `.planning/phases/XX-name/{phase}-USER-SETUP.md` using template from `~/.config/opencode/gsd/templates/user-setup.md`.
 
 **Content generation:**
 
@@ -1307,7 +1307,7 @@ Set `USER_SETUP_CREATED=true` if file was generated, for use in completion messa
 
 <step name="create_summary">
 Create `{phase}-{plan}-SUMMARY.md` as specified in the prompt's `<output>` section.
-Use .opencode/gsd:templates/summary.md for structure.
+Use ~/.config/opencode/gsd/templates/summary.md for structure.
 
 **File location:** `.planning/phases/XX-name/{phase}-{plan}-SUMMARY.md`
 
@@ -1562,7 +1562,7 @@ lmn012o feat(08-02): create user registration endpoint
 
 Each task has its own commit, followed by one metadata commit documenting plan completion.
 
-For commit message conventions, see .opencode/gsd:references/git-integration.md
+For commit message conventions, see ~/.config/opencode/gsd/references/git-integration.md
 </step>
 
 <step name="update_codebase_map">
@@ -1689,14 +1689,14 @@ Summary: .planning/phases/{phase-dir}/{phase}-{plan}-SUMMARY.md
 
 **{phase}-{next-plan}: [Plan Name]** — [objective from next PLAN.md]
 
-`/gsd:execute-plan .planning/phases/{phase-dir}/{phase}-{next-plan}-PLAN.md`
+`/gsd/execute-plan .planning/phases/{phase-dir}/{phase}-{next-plan}-PLAN.md`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/gsd:verify-work {phase}-{plan}` — manual acceptance testing before continuing
+- `/gsd/verify-work {phase}-{plan}` — manual acceptance testing before continuing
 - Review what was built before continuing
 
 ---
@@ -1750,16 +1750,16 @@ All {Y} plans finished.
 
 **Phase {Z+1}: {Next Phase Name}** — {Goal from ROADMAP.md}
 
-`/gsd:plan-phase {Z+1}`
+`/gsd/plan-phase {Z+1}`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/gsd:verify-work {Z}` — manual acceptance testing before continuing
-- `/gsd:discuss-phase {Z+1}` — gather context first
-- `/gsd:research-phase {Z+1}` — investigate unknowns
+- `/gsd/verify-work {Z}` — manual acceptance testing before continuing
+- `/gsd/discuss-phase {Z+1}` — gather context first
+- `/gsd/research-phase {Z+1}` — investigate unknowns
 - Review phase accomplishments before continuing
 
 ---
@@ -1790,15 +1790,15 @@ Milestone is 100% done.
 
 **Complete Milestone** — archive and prepare for next
 
-`/gsd:complete-milestone`
+`/gsd/complete-milestone`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/gsd:verify-work` — manual acceptance testing before completing milestone
-- `/gsd:add-phase <description>` — add another phase before completing
+- `/gsd/verify-work` — manual acceptance testing before completing milestone
+- `/gsd/add-phase <description>` — add another phase before completing
 - Review accomplishments before archiving
 
 ---
