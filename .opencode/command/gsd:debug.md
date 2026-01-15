@@ -13,9 +13,9 @@ Debug issues using scientific method with subagent isolation for investigation.
 </objective>
 
 <execution_context>
-@.opencode/gsd/workflows/debug.md
-@.opencode/gsd/templates/DEBUG.md
-@.opencode/gsd/templates/debug-subagent-prompt.md
+@.opencode/gsd:workflows/debug.md
+@.opencode/gsd:templates/DEBUG.md
+@.opencode/gsd:templates/debug-subagent-prompt.md
 </execution_context>
 
 <context>
@@ -87,7 +87,7 @@ Task(
 - Display root cause and evidence summary
 - Offer options:
   - "Fix now" → spawn fix subagent
-  - "Plan fix" → suggest /gsd/plan-fix
+  - "Plan fix" → suggest /gsd:plan-fix
   - "Manual fix" → done
 
 **If `## CHECKPOINT REACHED`:**
@@ -127,8 +127,8 @@ Read this file - it contains all evidence gathered so far.
 </checkpoint_response>
 
 <execution_context>
-@.opencode/gsd/workflows/debug.md
-@.opencode/gsd/templates/DEBUG.md
+@.opencode/gsd:workflows/debug.md
+@.opencode/gsd:templates/DEBUG.md
 </execution_context>
 
 <instructions>

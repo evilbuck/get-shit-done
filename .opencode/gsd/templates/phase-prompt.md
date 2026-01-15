@@ -29,10 +29,10 @@ Output: [What artifacts will be created]
 </objective>
 
 <execution_context>
-@.opencode/gsd/workflows/execute-plan.md
-@.opencode/gsd/templates/summary.md
+@.opencode/gsd:workflows/execute-plan.md
+@.opencode/gsd:templates/summary.md
 [If plan contains checkpoint tasks (type="checkpoint:*"), add:]
-@.opencode/gsd/references/checkpoints.md
+@.opencode/gsd:references/checkpoints.md
 </execution_context>
 
 <context>
@@ -134,7 +134,7 @@ After completion, create `.planning/phases/XX-name/{phase}-{plan}-SUMMARY.md`
 | `domain` | No | Domain skill if loaded (e.g., `next-js`) |
 | `user_setup` | No | Array of human-required setup items (external services) |
 
-**Wave is pre-computed:** Wave numbers are assigned during `/gsd/plan-phase`. Execute-phase reads `wave` directly from frontmatter and groups plans by wave number. No runtime dependency analysis needed.
+**Wave is pre-computed:** Wave numbers are assigned during `/gsd:plan-phase`. Execute-phase reads `wave` directly from frontmatter and groups plans by wave number. No runtime dependency analysis needed.
 
 ---
 
@@ -268,7 +268,7 @@ TDD features get dedicated plans with `type: tdd`.
 → Yes: Create a TDD plan
 → No: Standard task in standard plan
 
-See `.opencode/gsd/references/tdd.md` for TDD plan structure.
+See `.opencode/gsd:references/tdd.md` for TDD plan structure.
 
 ---
 
@@ -372,9 +372,9 @@ Output: Working dashboard component.
 </objective>
 
 <execution_context>
-@.opencode/gsd/workflows/execute-plan.md
-@.opencode/gsd/templates/summary.md
-@.opencode/gsd/references/checkpoints.md
+@.opencode/gsd:workflows/execute-plan.md
+@.opencode/gsd:templates/summary.md
+@.opencode/gsd:references/checkpoints.md
 </execution_context>
 
 <context>
@@ -496,4 +496,4 @@ user_setup:
 
 **Result:** Execute-plan generates `{phase}-USER-SETUP.md` with checklist for the user.
 
-See `.opencode/gsd/templates/user-setup.md` for full schema and examples
+See `.opencode/gsd:templates/user-setup.md` for full schema and examples

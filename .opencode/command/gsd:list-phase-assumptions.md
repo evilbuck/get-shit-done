@@ -12,7 +12,7 @@ Output: Conversational output only (no file creation) - ends with "What do you t
 </objective>
 
 <execution_context>
-@.opencode/gsd/workflows/list-phase-assumptions.md
+@.opencode/gsd:workflows/list-phase-assumptions.md
 </execution_context>
 
 <context>

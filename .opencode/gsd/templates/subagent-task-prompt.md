@@ -16,10 +16,10 @@ Commit each task atomically. Create SUMMARY.md. Update STATE.md.
 </objective>
 
 <execution_context>
-@.opencode/gsd/workflows/execute-plan.md
-@.opencode/gsd/templates/summary.md
-@.opencode/gsd/references/checkpoints.md
-@.opencode/gsd/references/tdd.md
+@.opencode/gsd:workflows/execute-plan.md
+@.opencode/gsd:templates/summary.md
+@.opencode/gsd:references/checkpoints.md
+@.opencode/gsd:references/tdd.md
 </execution_context>
 
 <context>
@@ -31,7 +31,7 @@ Config: @.planning/config.json (if exists)
 <checkpoint_behavior>
 When you encounter a checkpoint task (type="checkpoint:*") or auth gate, STOP execution and return using the structured format in:
 
-@.opencode/gsd/templates/checkpoint-return.md
+@.opencode/gsd:templates/checkpoint-return.md
 
 **Required in your return:**
 1. Completed Tasks table with commit hashes and files

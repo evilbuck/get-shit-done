@@ -1,5 +1,5 @@
 <purpose>
-Validate built features through conversational testing with persistent state. Creates UAT.md that tracks test progress, survives /clear, and feeds into /gsd/plan-fix.
+Validate built features through conversational testing with persistent state. Creates UAT.md that tracks test progress, survives /clear, and feeds into /gsd:plan-fix.
 
 User tests, Claude records. One test at a time. Plain text responses.
 </purpose>
@@ -15,7 +15,7 @@ No Pass/Fail buttons. No severity questions. Just: "Here's what should happen. D
 </philosophy>
 
 <template>
-@.opencode/gsd/templates/UAT.md
+@.opencode/gsd:templates/UAT.md
 </template>
 
 <process>
@@ -59,7 +59,7 @@ If no, continue to `create_uat_file`.
 ```
 No active UAT sessions.
 
-Provide a phase number to start testing (e.g., /gsd/verify-work 4)
+Provide a phase number to start testing (e.g., /gsd:verify-work 4)
 ```
 
 **If no active sessions AND $ARGUMENTS provided:**
@@ -153,7 +153,7 @@ issues: 0
 pending: [N]
 skipped: 0
 
-## Issues for /gsd/plan-fix
+## Issues for /gsd:plan-fix
 
 [none yet]
 ```
@@ -300,8 +300,8 @@ Present summary:
 ```
 All tests passed. Ready to continue.
 
-- `/gsd/plan-phase {next}` — Plan next phase
-- `/gsd/execute-phase {next}` — Execute next phase
+- `/gsd:plan-phase {next}` — Plan next phase
+- `/gsd:execute-phase {next}` — Execute next phase
 ```
 </step>
 
@@ -317,7 +317,7 @@ Spawning parallel debug agents to investigate each issue.
 ```
 
 - Load diagnose-issues workflow
-- Follow @.opencode/gsd/workflows/diagnose-issues.md
+- Follow @.opencode/gsd:workflows/diagnose-issues.md
 - Spawn parallel debug agents for each issue
 - Collect root causes
 - Update UAT.md with root causes
@@ -341,8 +341,8 @@ Diagnosis runs automatically - no user prompt. Parallel agents investigate simul
 ...
 
 Next steps:
-- `/gsd/plan-fix {phase}` — Create fix plan with root causes
-- `/gsd/verify-work {phase}` — Re-test after fixes
+- `/gsd:plan-fix {phase}` — Create fix plan with root causes
+- `/gsd:verify-work {phase}` — Re-test after fixes
 ```
 </step>
 

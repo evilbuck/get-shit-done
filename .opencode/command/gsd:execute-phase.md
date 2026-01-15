@@ -13,8 +13,8 @@ Context budget: ~15% orchestrator, 100% fresh per subagent.
 </objective>
 
 <execution_context>
-@.opencode/gsd/workflows/execute-phase.md
-@.opencode/gsd/templates/subagent-task-prompt.md
+@.opencode/gsd:workflows/execute-phase.md
+@.opencode/gsd:templates/subagent-task-prompt.md
 </execution_context>
 
 <context>
@@ -86,16 +86,16 @@ All {Y} plans finished.
 
 **Phase {Z+1}: {Name}** — {Goal from ROADMAP.md}
 
-`/gsd/plan-phase {Z+1}`
+`/gsd:plan-phase {Z+1}`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/gsd/verify-work {Z}` — manual acceptance testing before continuing
-- `/gsd/discuss-phase {Z+1}` — gather context first
-- `/gsd/research-phase {Z+1}` — investigate unknowns
+- `/gsd:verify-work {Z}` — manual acceptance testing before continuing
+- `/gsd:discuss-phase {Z+1}` — gather context first
+- `/gsd:research-phase {Z+1}` — investigate unknowns
 
 ---
 ```
@@ -117,15 +117,15 @@ All {N} phases finished.
 
 **Complete Milestone** — archive and prepare for next
 
-`/gsd/complete-milestone`
+`/gsd:complete-milestone`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/gsd/verify-work` — manual acceptance testing before completing milestone
-- `/gsd/add-phase <description>` — add another phase before completing
+- `/gsd:verify-work` — manual acceptance testing before completing milestone
+- `/gsd:add-phase <description>` — add another phase before completing
 
 ---
 ```

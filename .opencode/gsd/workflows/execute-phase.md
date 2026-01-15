@@ -101,7 +101,7 @@ waves = {
 }
 ```
 
-**No dependency analysis needed.** Wave numbers are pre-computed during `/gsd/plan-phase`.
+**No dependency analysis needed.** Wave numbers are pre-computed during `/gsd:plan-phase`.
 
 Report wave structure to user:
 ```
@@ -131,10 +131,10 @@ Execute each wave in sequence. Autonomous plans within a wave run in parallel.
    </objective>
 
    <execution_context>
-   @.opencode/gsd/workflows/execute-plan.md
-   @.opencode/gsd/templates/summary.md
-   @.opencode/gsd/references/checkpoints.md
-   @.opencode/gsd/references/tdd.md
+   @.opencode/gsd:workflows/execute-plan.md
+   @.opencode/gsd:templates/summary.md
+   @.opencode/gsd:references/checkpoints.md
+   @.opencode/gsd:references/tdd.md
    </execution_context>
 
    <context>
@@ -313,7 +313,7 @@ Present next steps based on milestone status:
 
 **Phase {X+1}: {Name}** — {Goal}
 
-`/gsd/plan-phase {X+1}`
+`/gsd:plan-phase {X+1}`
 
 <sub>`/clear` first for fresh context</sub>
 ```
@@ -324,7 +324,7 @@ MILESTONE COMPLETE!
 
 All {N} phases executed.
 
-`/gsd/complete-milestone`
+`/gsd:complete-milestone`
 ```
 </step>
 
@@ -379,7 +379,7 @@ Each subagent: Fresh 200k context
 
 If phase execution was interrupted (context limit, user exit, error):
 
-1. Run `/gsd/execute-phase {phase}` again
+1. Run `/gsd:execute-phase {phase}` again
 2. discover_plans finds completed SUMMARYs
 3. Skips completed plans
 4. Resumes from first incomplete plan

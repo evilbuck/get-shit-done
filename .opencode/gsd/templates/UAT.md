@@ -57,7 +57,7 @@ issues: [N]
 pending: [N]
 skipped: [N]
 
-## Issues for /gsd/plan-fix
+## Issues for /gsd:plan-fix
 
 - UAT-001: [brief summary] (blocker) - Test 3
   root_cause: [empty until diagnosed]
@@ -93,11 +93,11 @@ skipped: [N]
 - OVERWRITE counts after each response
 - Tracks: total, passed, issues, pending, skipped
 
-**Issues for /gsd/plan-fix:**
+**Issues for /gsd:plan-fix:**
 - APPEND only when issue found
 - Format: `- UAT-{NNN}: {summary} ({severity}) - Test {N}`
 - After diagnosis: add `root_cause:` line under each issue
-- This section feeds directly into /gsd/plan-fix
+- This section feeds directly into /gsd:plan-fix
 
 </section_rules>
 
@@ -112,7 +112,7 @@ skipped: [N]
    - Each issue test gets `root_cause:` and `debug_session:` fields
    - Issues section gets `root_cause:` under each issue
 5. status → "diagnosed"
-6. Ready for /gsd/plan-fix with root causes
+6. Ready for /gsd:plan-fix with root causes
 
 **After diagnosis:**
 ```markdown
@@ -126,7 +126,7 @@ debug_session: .planning/debug/comment-not-refreshing.md
 ```
 
 ```markdown
-## Issues for /gsd/plan-fix
+## Issues for /gsd:plan-fix
 
 - UAT-001: Comment doesn't appear until refresh (major) - Test 2
   root_cause: useEffect in CommentList.tsx missing commentCount dependency
@@ -136,7 +136,7 @@ debug_session: .planning/debug/comment-not-refreshing.md
 
 <lifecycle>
 
-**Creation:** When /gsd/verify-work starts new session
+**Creation:** When /gsd:verify-work starts new session
 - Extract tests from SUMMARY.md files
 - Set status to "testing"
 - Current Test points to test 1
@@ -237,7 +237,7 @@ issues: 1
 pending: 3
 skipped: 0
 
-## Issues for /gsd/plan-fix
+## Issues for /gsd:plan-fix
 
 - UAT-001: Comment doesn't appear until refresh (major) - Test 2
   root_cause: useEffect in CommentList.tsx missing commentCount dependency

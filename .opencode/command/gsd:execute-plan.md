@@ -13,7 +13,7 @@ Context budget: ~15% orchestrator, 100% fresh for subagent.
 </objective>
 
 <execution_context>
-@.opencode/gsd/templates/subagent-task-prompt.md
+@.opencode/gsd:templates/subagent-task-prompt.md
 </execution_context>
 
 <context>
@@ -119,7 +119,7 @@ Summary: .planning/phases/{phase-dir}/{phase}-{plan}-SUMMARY.md
 
 **{phase}-{next-plan}: [Plan Name]** — [objective from PLAN.md]
 
-`/gsd/execute-plan .planning/phases/{phase-dir}/{phase}-{next-plan}-PLAN.md`
+`/gsd:execute-plan .planning/phases/{phase-dir}/{phase}-{next-plan}-PLAN.md`
 
 <sub>`/clear` first → fresh context window</sub>
 
@@ -152,7 +152,7 @@ All {Y} plans finished.
 
 **Phase {Z+1}: {Name}** — {Goal from ROADMAP.md}
 
-`/gsd/plan-phase {Z+1}`
+`/gsd:plan-phase {Z+1}`
 
 <sub>`/clear` first → fresh context window</sub>
 
@@ -174,7 +174,7 @@ All {N} phases finished.
 
 ## ▶ Next Up
 
-`/gsd/complete-milestone`
+`/gsd:complete-milestone`
 
 <sub>`/clear` first → fresh context window</sub>
 

@@ -18,9 +18,9 @@ Output: RESEARCH.md with ecosystem knowledge that informs quality planning.
 </objective>
 
 <execution_context>
-@.opencode/gsd/workflows/research-phase.md
-@.opencode/gsd/templates/research.md
-@.opencode/gsd/references/research-pitfalls.md
+@.opencode/gsd:workflows/research-phase.md
+@.opencode/gsd:templates/research.md
+@.opencode/gsd:references/research-pitfalls.md
 </execution_context>
 
 <context>

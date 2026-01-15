@@ -9,12 +9,12 @@ Validate built features through conversational testing with persistent state.
 
 Purpose: Confirm what Claude built actually works from user's perspective. One test at a time, plain text responses, no interrogation.
 
-Output: {phase}-UAT.md tracking all test results, issues logged for /gsd/plan-fix
+Output: {phase}-UAT.md tracking all test results, issues logged for /gsd:plan-fix
 </objective>
 
 <execution_context>
-@.opencode/gsd/workflows/verify-work.md
-@.opencode/gsd/templates/UAT.md
+@.opencode/gsd:workflows/verify-work.md
+@.opencode/gsd:templates/UAT.md
 </execution_context>
 
 <context>
@@ -44,7 +44,7 @@ Phase: $ARGUMENTS (optional)
 - Don't ask severity — infer from description
 - Don't present full checklist upfront — one test at a time
 - Don't run automated tests — this is manual user validation
-- Don't fix issues during testing — log for /gsd/plan-fix
+- Don't fix issues during testing — log for /gsd:plan-fix
 </anti_patterns>
 
 <success_criteria>

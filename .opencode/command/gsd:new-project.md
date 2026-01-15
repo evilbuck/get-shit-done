@@ -15,10 +15,10 @@ Creates `.planning/` with PROJECT.md and config.json.
 
 <execution_context>
 
-@.opencode/gsd/references/principles.md
-@.opencode/gsd/references/questioning.md
-@.opencode/gsd/templates/project.md
-@.opencode/gsd/templates/config.json
+@.opencode/gsd:references/principles.md
+@.opencode/gsd:references/questioning.md
+@.opencode/gsd:templates/project.md
+@.opencode/gsd:templates/config.json
 
 </execution_context>
 
@@ -30,7 +30,7 @@ Creates `.planning/` with PROJECT.md and config.json.
 
 1. **Abort if project exists:**
    ```bash
-   [ -f .planning/PROJECT.md ] && echo "ERROR: Project already initialized. Use /gsd/progress" && exit 1
+   [ -f .planning/PROJECT.md ] && echo "ERROR: Project already initialized. Use /gsd:progress" && exit 1
    ```
 
 2. **Initialize git repo in THIS directory** (required even if inside a parent repo):
@@ -68,12 +68,12 @@ Use AskUserQuestion:
 - header: "Existing Code"
 - question: "I detected existing code in this directory. Would you like to map the codebase first?"
 - options:
-  - "Map codebase first" — Run /gsd/map-codebase to understand existing architecture (Recommended)
+  - "Map codebase first" — Run /gsd:map-codebase to understand existing architecture (Recommended)
   - "Skip mapping" — Proceed with project initialization
 
 **If "Map codebase first":**
 ```
-Run `/gsd/map-codebase` first, then return to `/gsd/new-project`
+Run `/gsd:map-codebase` first, then return to `/gsd:new-project`
 ```
 Exit command.
 
@@ -285,7 +285,7 @@ EOF
 
 <step name="done">
 
-Present completion with next steps (see .opencode/gsd/references/continuation-format.md):
+Present completion with next steps (see .opencode/gsd:references/continuation-format.md):
 
 ```
 Project initialized:
@@ -300,7 +300,7 @@ Project initialized:
 
 **[Project Name]** — create roadmap
 
-`/gsd/create-roadmap`
+`/gsd:create-roadmap`
 
 <sub>`/clear` first → fresh context window</sub>
 

@@ -6,8 +6,8 @@ that delivers value. The roadmap provides structure, not detailed tasks.
 <required_reading>
 **Read these files NOW:**
 
-1. .opencode/gsd/templates/roadmap.md
-2. .opencode/gsd/templates/state.md
+1. .opencode/gsd:templates/roadmap.md
+2. .opencode/gsd:templates/state.md
 3. Read `.planning/PROJECT.md` if it exists
    </required_reading>
 
@@ -130,7 +130,7 @@ Use decimal phases (2.1, 2.2) for urgent insertions:
 - Urgent work that can't wait for next milestone
 - Critical bugs blocking progress
 - Security patches needing immediate attention
-- NOT for scope creep or "nice to haves" (capture with /gsd/add-todo instead)
+- NOT for scope creep or "nice to haves" (capture with /gsd:add-todo instead)
 
 **Phase execution order:**
 Numeric sort: 1 → 1.1 → 1.2 → 2 → 2.1 → 3
@@ -290,10 +290,10 @@ mkdir -p .planning/phases
 </step>
 
 <step name="write_roadmap">
-Use template from `.opencode/gsd/templates/roadmap.md`.
+Use template from `.opencode/gsd:templates/roadmap.md`.
 
 Initial roadmaps use integer phases (1, 2, 3...).
-Decimal phases added later via /gsd/insert-phase command (if it exists).
+Decimal phases added later via /gsd:insert-phase command (if it exists).
 
 Write to `.planning/ROADMAP.md` with:
 
@@ -319,7 +319,7 @@ mkdir -p .planning/phases/02-{phase-name}
 
 Create STATE.md — the project's living memory.
 
-Use template from `.opencode/gsd/templates/state.md`.
+Use template from `.opencode/gsd:templates/state.md`.
 
 Write to `.planning/STATE.md`:
 
@@ -430,15 +430,15 @@ Project initialized:
 
 **Phase 1: [Name]** — [Goal from ROADMAP.md]
 
-`/gsd/plan-phase 1`
+`/gsd:plan-phase 1`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/gsd/discuss-phase 1` — gather context first
-- `/gsd/research-phase 1` — investigate unknowns
+- `/gsd:discuss-phase 1` — gather context first
+- `/gsd:research-phase 1` — investigate unknowns
 - Review roadmap
 
 ---
