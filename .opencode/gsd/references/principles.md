@@ -107,7 +107,7 @@ TDD requires 2-3 execution cycles (RED → GREEN → REFACTOR), each with file r
 
 This is about design quality, not test coverage metrics.
 
-See `~/.config/opencode/gsd/references/tdd.md` for TDD plan structure.
+See `.opencode/gsd/references/tdd.md` for TDD plan structure.
 </test_driven_when_beneficial>
 
 <ship_fast>
@@ -139,7 +139,7 @@ Each task gets its own commit immediately after completion:
 - 2-3 task commits (working code)
 - 1 metadata commit (SUMMARY + STATE + ROADMAP)
 
-See `~/.config/opencode/gsd/references/git-integration.md` for complete strategy.
+See `.opencode/gsd/references/git-integration.md` for complete strategy.
 </atomic_commits>
 
 <anti_enterprise>

@@ -63,10 +63,10 @@ Output: [...]
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/execute-plan.md
-@~/.config/opencode/gsd/templates/summary.md
+@.opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/templates/summary.md
 [If checkpoints exist:]
-@~/.config/opencode/gsd/references/checkpoints.md
+@.opencode/gsd/references/checkpoints.md
 </execution_context>
 
 <context>

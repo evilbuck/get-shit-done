@@ -127,7 +127,7 @@ Write milestone context to file for handoff.
 
 **File:** `.planning/MILESTONE-CONTEXT.md`
 
-Use template from ~/.config/opencode/gsd/templates/milestone-context.md
+Use template from .opencode/gsd/templates/milestone-context.md
 
 Populate with:
 - Features identified during discussion

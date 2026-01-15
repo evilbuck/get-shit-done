@@ -10,9 +10,9 @@ Roadmaps define what work happens in what order. Run after /gsd/new-project.
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/create-roadmap.md
-@~/.config/opencode/gsd/templates/roadmap.md
-@~/.config/opencode/gsd/templates/state.md
+@.opencode/gsd/workflows/create-roadmap.md
+@.opencode/gsd/templates/roadmap.md
+@.opencode/gsd/templates/state.md
 </execution_context>
 
 <context>

@@ -28,7 +28,7 @@ Claude's training data is 6-18 months stale. Always verify.
 2. **Official docs** - When Context7 lacks coverage
 3. **WebSearch LAST** - For comparisons and trends only
 
-See ~/.config/opencode/gsd/templates/discovery.md `<discovery_protocol>` for full protocol.
+See .opencode/gsd/templates/discovery.md `<discovery_protocol>` for full protocol.
 </source_hierarchy>
 
 <process>
@@ -107,9 +107,9 @@ For: Choosing between options, new external integration.
 
 5. **Cross-verify:** Any WebSearch finding → confirm with Context7/official docs.
 
-6. **Quality check:** Before finalizing findings, consult ~/.config/opencode/gsd/references/research-pitfalls.md to avoid common research gaps.
+6. **Quality check:** Before finalizing findings, consult .opencode/gsd/references/research-pitfalls.md to avoid common research gaps.
 
-7. **Create DISCOVERY.md** using ~/.config/opencode/gsd/templates/discovery.md structure:
+7. **Create DISCOVERY.md** using .opencode/gsd/templates/discovery.md structure:
 
    - Summary with recommendation
    - Key findings per option
@@ -128,7 +128,7 @@ For: Architectural decisions, novel problems, high-risk choices.
 
 **Process:**
 
-1. **Scope the discovery** using ~/.config/opencode/gsd/templates/discovery.md:
+1. **Scope the discovery** using .opencode/gsd/templates/discovery.md:
 
    - Define clear scope
    - Define include/exclude boundaries
@@ -160,11 +160,11 @@ For: Architectural decisions, novel problems, high-risk choices.
    - Mark what's verified vs assumed
    - Flag contradictions
 
-6. **Quality check:** Before finalizing findings, consult ~/.config/opencode/gsd/references/research-pitfalls.md to ensure comprehensive coverage and avoid common research gaps.
+6. **Quality check:** Before finalizing findings, consult .opencode/gsd/references/research-pitfalls.md to ensure comprehensive coverage and avoid common research gaps.
 
 7. **Create comprehensive DISCOVERY.md:**
 
-   - Full structure from ~/.config/opencode/gsd/templates/discovery.md
+   - Full structure from .opencode/gsd/templates/discovery.md
    - Quality report with source attribution
    - Confidence by finding
    - If LOW confidence on any critical finding → add validation checkpoints
@@ -188,7 +188,7 @@ Ask: What do we need to learn before we can plan this phase?
   </step>
 
 <step name="create_discovery_scope">
-Use ~/.config/opencode/gsd/templates/discovery.md.
+Use .opencode/gsd/templates/discovery.md.
 
 Include:
 

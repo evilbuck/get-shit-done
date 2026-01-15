@@ -151,7 +151,7 @@ Loop until "Create CONTEXT.md" selected.
 <step name="write_context">
 Create CONTEXT.md capturing the user's vision.
 
-Use template from ~/.config/opencode/gsd/templates/context.md
+Use template from .opencode/gsd/templates/context.md
 
 **File location:** `.planning/phases/${PHASE}-${SLUG}/${PHASE}-CONTEXT.md`
 

@@ -7,7 +7,7 @@ This is used after completing a milestone when ready to define the next chunk of
 <required_reading>
 **Read these files NOW:**
 
-1. ~/.config/opencode/gsd/templates/roadmap.md (milestone-grouped format)
+1. .opencode/gsd/templates/roadmap.md (milestone-grouped format)
 2. `.planning/ROADMAP.md`
 3. `.planning/STATE.md`
 4. `.planning/MILESTONES.md` (if exists)

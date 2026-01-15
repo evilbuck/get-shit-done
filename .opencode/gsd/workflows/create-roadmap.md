@@ -6,8 +6,8 @@ that delivers value. The roadmap provides structure, not detailed tasks.
 <required_reading>
 **Read these files NOW:**
 
-1. ~/.config/opencode/gsd/templates/roadmap.md
-2. ~/.config/opencode/gsd/templates/state.md
+1. .opencode/gsd/templates/roadmap.md
+2. .opencode/gsd/templates/state.md
 3. Read `.planning/PROJECT.md` if it exists
    </required_reading>
 
@@ -290,7 +290,7 @@ mkdir -p .planning/phases
 </step>
 
 <step name="write_roadmap">
-Use template from `~/.config/opencode/gsd/templates/roadmap.md`.
+Use template from `.opencode/gsd/templates/roadmap.md`.
 
 Initial roadmaps use integer phases (1, 2, 3...).
 Decimal phases added later via /gsd/insert-phase command (if it exists).
@@ -319,7 +319,7 @@ mkdir -p .planning/phases/02-{phase-name}
 
 Create STATE.md — the project's living memory.
 
-Use template from `~/.config/opencode/gsd/templates/state.md`.
+Use template from `.opencode/gsd/templates/state.md`.
 
 Write to `.planning/STATE.md`:
 

@@ -19,11 +19,11 @@ Use this command when:
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/execute-plan.md
-@~/.config/opencode/gsd/workflows/execute-phase.md
-@~/.config/opencode/gsd/templates/summary.md
-@~/.config/opencode/gsd/references/checkpoints.md
-@~/.config/opencode/gsd/references/tdd.md
+@.opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/workflows/execute-phase.md
+@.opencode/gsd/templates/summary.md
+@.opencode/gsd/references/checkpoints.md
+@.opencode/gsd/references/tdd.md
 </execution_context>
 
 <context>

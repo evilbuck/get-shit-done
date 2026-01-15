@@ -15,11 +15,11 @@ Decimal phases enable urgent work insertion without renumbering:
 <required_reading>
 **Read these files NOW:**
 
-1. ~/.config/opencode/gsd/templates/phase-prompt.md
-2. ~/.config/opencode/gsd/references/plan-format.md
-3. ~/.config/opencode/gsd/references/scope-estimation.md
-4. ~/.config/opencode/gsd/references/checkpoints.md
-5. ~/.config/opencode/gsd/references/tdd.md
+1. .opencode/gsd/templates/phase-prompt.md
+2. .opencode/gsd/references/plan-format.md
+3. .opencode/gsd/references/scope-estimation.md
+4. .opencode/gsd/references/checkpoints.md
+5. .opencode/gsd/references/tdd.md
 6. .planning/ROADMAP.md
 7. .planning/PROJECT.md
 
@@ -281,13 +281,13 @@ Standard tasks (remain in standard plans):
 
 **Test framework:** If project has no test setup and TDD plans are needed, the first TDD plan's RED phase handles framework setup as part of writing the first test.
 
-See `~/.config/opencode/gsd/references/tdd.md` for TDD plan structure.
+See `.opencode/gsd/references/tdd.md` for TDD plan structure.
 
 **Checkpoints:** Visual/functional verification → checkpoint:human-verify. Implementation choices → checkpoint:decision. Manual action (email, 2FA) → checkpoint:human-action (rare).
 
 **Critical:** If external resource has CLI/API (Vercel, Stripe, etc.), use type="auto" to automate. Only checkpoint for verification AFTER automation.
 
-See ~/.config/opencode/gsd/references/checkpoints.md for checkpoint structure.
+See .opencode/gsd/references/checkpoints.md for checkpoint structure.
 
 **User setup detection:** For tasks involving external services, identify human-required configuration:
 
@@ -500,7 +500,7 @@ For quick depth:
 
 **Each plan must be:** 2-3 tasks max, ~50% context target, independently committable.
 
-See ~/.config/opencode/gsd/references/scope-estimation.md for complete guidance.
+See .opencode/gsd/references/scope-estimation.md for complete guidance.
 </step>
 
 <step name="confirm_breakdown">
@@ -547,7 +547,7 @@ Wait for confirmation. If "adjust": revise. If "start over": return to gather_ph
 </step>
 
 <step name="write_phase_prompt">
-Use template from `~/.config/opencode/gsd/templates/phase-prompt.md`.
+Use template from `.opencode/gsd/templates/phase-prompt.md`.
 
 **Single plan:** Write to `.planning/phases/XX-name/{phase}-01-PLAN.md`
 
@@ -635,9 +635,9 @@ Only include prior plan SUMMARY references if this plan genuinely needs decision
 Include checkpoint reference in execution_context:
 ```markdown
 <execution_context>
-@~/.config/opencode/gsd/workflows/execute-plan.md
-@~/.config/opencode/gsd/templates/summary.md
-@~/.config/opencode/gsd/references/checkpoints.md
+@.opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/templates/summary.md
+@.opencode/gsd/references/checkpoints.md
 </execution_context>
 ```
 
@@ -716,7 +716,7 @@ Wave 2: {plan-03}
 
 If you can't specify Files + Action + Verify + Done, the task is too vague.
 
-**TDD candidates get dedicated plans.** If "Create price calculator with discount rules" warrants TDD, create a TDD plan for it. See `~/.config/opencode/gsd/references/tdd.md` for TDD plan structure.
+**TDD candidates get dedicated plans.** If "Create price calculator with discount rules" warrants TDD, create a TDD plan for it. See `.opencode/gsd/references/tdd.md` for TDD plan structure.
 </task_quality>
 
 <anti_patterns>

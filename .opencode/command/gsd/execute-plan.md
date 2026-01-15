@@ -13,7 +13,7 @@ Context budget: ~15% orchestrator, 100% fresh for subagent.
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/templates/subagent-task-prompt.md
+@.opencode/gsd/templates/subagent-task-prompt.md
 </execution_context>
 
 <context>

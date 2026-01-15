@@ -15,8 +15,8 @@ Output: Milestone archived, roadmap reorganized, git tagged.
 <execution_context>
 **Load these files NOW (before proceeding):**
 
-- @~/.config/opencode/gsd/workflows/complete-milestone.md (main workflow)
-- @~/.config/opencode/gsd/templates/milestone-archive.md (archive template)
+- @.opencode/gsd/workflows/complete-milestone.md (main workflow)
+- @.opencode/gsd/templates/milestone-archive.md (archive template)
   </execution_context>
 
 <context>

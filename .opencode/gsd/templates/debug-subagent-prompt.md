@@ -21,11 +21,11 @@ Symptoms are pre-filled. Skip symptom gathering, start investigating immediately
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/debug.md
-@~/.config/opencode/gsd/templates/DEBUG.md
-@~/.config/opencode/gsd/references/debugging/debugging-mindset.md
-@~/.config/opencode/gsd/references/debugging/hypothesis-testing.md
-@~/.config/opencode/gsd/references/debugging/investigation-techniques.md
+@.opencode/gsd/workflows/debug.md
+@.opencode/gsd/templates/DEBUG.md
+@.opencode/gsd/references/debugging/debugging-mindset.md
+@.opencode/gsd/references/debugging/hypothesis-testing.md
+@.opencode/gsd/references/debugging/investigation-techniques.md
 </execution_context>
 
 <symptoms>
@@ -339,9 +339,9 @@ Read this file first - it contains all evidence gathered so far.
 </mode>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/debug.md
-@~/.config/opencode/gsd/templates/DEBUG.md
-@~/.config/opencode/gsd/references/debugging/debugging-mindset.md
+@.opencode/gsd/workflows/debug.md
+@.opencode/gsd/templates/DEBUG.md
+@.opencode/gsd/references/debugging/debugging-mindset.md
 </execution_context>
 
 <instructions>

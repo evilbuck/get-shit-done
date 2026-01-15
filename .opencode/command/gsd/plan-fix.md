@@ -12,8 +12,8 @@ Output: {phase}-FIX.md in the phase directory, ready for execution.
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/references/plan-format.md
-@~/.config/opencode/gsd/references/checkpoints.md
+@.opencode/gsd/references/plan-format.md
+@.opencode/gsd/references/checkpoints.md
 </execution_context>
 
 <context>
@@ -172,8 +172,8 @@ Priority: {blocker count} blocker, {major count} major, {minor count} minor, {co
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/execute-plan.md
-@~/.config/opencode/gsd/templates/summary.md
+@.opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/templates/summary.md
 </execution_context>
 
 <context>

@@ -216,7 +216,7 @@ get-shit-done/
 
 **New Workflow:**
 - Implementation: `get-shit-done/workflows/{name}.md`
-- Usage: Reference from command with `@~/.config/opencode/gsd/workflows/{name}.md`
+- Usage: Reference from command with `@.opencode/gsd/workflows/{name}.md`
 
 **New Reference Document:**
 - Implementation: `get-shit-done/references/{name}.md`
@@ -234,7 +234,7 @@ get-shit-done/
 - Committed: Yes (source of truth)
 
 **commands/**
-- Purpose: Slash commands installed to ~/.config/opencode/command/
+- Purpose: Slash commands installed to .opencode/command/
 - Source: Copied by bin/install.js during installation
 - Committed: Yes (source of truth)
 

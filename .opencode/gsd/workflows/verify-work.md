@@ -15,7 +15,7 @@ No Pass/Fail buttons. No severity questions. Just: "Here's what should happen. D
 </philosophy>
 
 <template>
-@~/.config/opencode/gsd/templates/UAT.md
+@.opencode/gsd/templates/UAT.md
 </template>
 
 <process>
@@ -317,7 +317,7 @@ Spawning parallel debug agents to investigate each issue.
 ```
 
 - Load diagnose-issues workflow
-- Follow @~/.config/opencode/gsd/workflows/diagnose-issues.md
+- Follow @.opencode/gsd/workflows/diagnose-issues.md
 - Spawn parallel debug agents for each issue
 - Collect root causes
 - Update UAT.md with root causes

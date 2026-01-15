@@ -29,10 +29,10 @@ Output: [What artifacts will be created]
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/execute-plan.md
-@~/.config/opencode/gsd/templates/summary.md
+@.opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/templates/summary.md
 [If plan contains checkpoint tasks (type="checkpoint:*"), add:]
-@~/.config/opencode/gsd/references/checkpoints.md
+@.opencode/gsd/references/checkpoints.md
 </execution_context>
 
 <context>
@@ -268,7 +268,7 @@ TDD features get dedicated plans with `type: tdd`.
 → Yes: Create a TDD plan
 → No: Standard task in standard plan
 
-See `~/.config/opencode/gsd/references/tdd.md` for TDD plan structure.
+See `.opencode/gsd/references/tdd.md` for TDD plan structure.
 
 ---
 
@@ -372,9 +372,9 @@ Output: Working dashboard component.
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/execute-plan.md
-@~/.config/opencode/gsd/templates/summary.md
-@~/.config/opencode/gsd/references/checkpoints.md
+@.opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/templates/summary.md
+@.opencode/gsd/references/checkpoints.md
 </execution_context>
 
 <context>
@@ -496,4 +496,4 @@ user_setup:
 
 **Result:** Execute-plan generates `{phase}-USER-SETUP.md` with checklist for the user.
 
-See `~/.config/opencode/gsd/templates/user-setup.md` for full schema and examples
+See `.opencode/gsd/templates/user-setup.md` for full schema and examples

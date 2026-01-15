@@ -13,8 +13,8 @@ Output: {phase}-UAT.md tracking all test results, issues logged for /gsd/plan-fi
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/verify-work.md
-@~/.config/opencode/gsd/templates/UAT.md
+@.opencode/gsd/workflows/verify-work.md
+@.opencode/gsd/templates/UAT.md
 </execution_context>
 
 <context>

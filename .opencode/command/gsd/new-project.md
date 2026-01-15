@@ -15,10 +15,10 @@ Creates `.planning/` with PROJECT.md and config.json.
 
 <execution_context>
 
-@~/.config/opencode/gsd/references/principles.md
-@~/.config/opencode/gsd/references/questioning.md
-@~/.config/opencode/gsd/templates/project.md
-@~/.config/opencode/gsd/templates/config.json
+@.opencode/gsd/references/principles.md
+@.opencode/gsd/references/questioning.md
+@.opencode/gsd/templates/project.md
+@.opencode/gsd/templates/config.json
 
 </execution_context>
 
@@ -285,7 +285,7 @@ EOF
 
 <step name="done">
 
-Present completion with next steps (see ~/.config/opencode/gsd/references/continuation-format.md):
+Present completion with next steps (see .opencode/gsd/references/continuation-format.md):
 
 ```
 Project initialized:

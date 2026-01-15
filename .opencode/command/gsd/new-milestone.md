@@ -12,8 +12,8 @@ Output: New milestone in ROADMAP.md, updated STATE.md, phase directories created
 </objective>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/create-milestone.md
-@~/.config/opencode/gsd/templates/roadmap.md
+@.opencode/gsd/workflows/create-milestone.md
+@.opencode/gsd/templates/roadmap.md
 </execution_context>
 
 <context>

@@ -38,15 +38,15 @@ Ask about experience. Investigate the cause yourself.
 </philosophy>
 
 <references>
-@~/.config/opencode/gsd/references/debugging/debugging-mindset.md
-@~/.config/opencode/gsd/references/debugging/hypothesis-testing.md
-@~/.config/opencode/gsd/references/debugging/investigation-techniques.md
-@~/.config/opencode/gsd/references/debugging/verification-patterns.md
-@~/.config/opencode/gsd/references/debugging/when-to-research.md
+@.opencode/gsd/references/debugging/debugging-mindset.md
+@.opencode/gsd/references/debugging/hypothesis-testing.md
+@.opencode/gsd/references/debugging/investigation-techniques.md
+@.opencode/gsd/references/debugging/verification-patterns.md
+@.opencode/gsd/references/debugging/when-to-research.md
 </references>
 
 <template>
-@~/.config/opencode/gsd/templates/DEBUG.md
+@.opencode/gsd/templates/DEBUG.md
 </template>
 
 <checkpoint_behavior>

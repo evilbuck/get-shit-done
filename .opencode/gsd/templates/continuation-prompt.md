@@ -32,10 +32,10 @@ The following tasks are ALREADY DONE. Do not repeat them.
 </resume_point>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/execute-plan.md
-@~/.config/opencode/gsd/templates/summary.md
-@~/.config/opencode/gsd/references/checkpoints.md
-@~/.config/opencode/gsd/references/tdd.md
+@.opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/templates/summary.md
+@.opencode/gsd/references/checkpoints.md
+@.opencode/gsd/references/tdd.md
 </execution_context>
 
 <context>
@@ -46,7 +46,7 @@ Config: @.planning/config.json (if exists)
 
 <checkpoint_behavior>
 If you hit another checkpoint, return using the format in:
-@~/.config/opencode/gsd/templates/checkpoint-return.md
+@.opencode/gsd/templates/checkpoint-return.md
 
 Include ALL completed tasks (both previous and new) in the Completed Tasks table.
 </checkpoint_behavior>
@@ -177,10 +177,10 @@ The user has completed the manual action. Verify it worked, then continue:
 </resume_point>
 
 <execution_context>
-@~/.config/opencode/gsd/workflows/execute-plan.md
-@~/.config/opencode/gsd/templates/summary.md
-@~/.config/opencode/gsd/references/checkpoints.md
-@~/.config/opencode/gsd/references/tdd.md
+@.opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/templates/summary.md
+@.opencode/gsd/references/checkpoints.md
+@.opencode/gsd/references/tdd.md
 </execution_context>
 
 <context>
@@ -190,7 +190,7 @@ Project state: @.planning/STATE.md
 
 <checkpoint_behavior>
 If you hit another checkpoint, return using the format in:
-@~/.config/opencode/gsd/templates/checkpoint-return.md
+@.opencode/gsd/templates/checkpoint-return.md
 
 Include ALL completed tasks (both previous and new) in the Completed Tasks table.
 </checkpoint_behavior>

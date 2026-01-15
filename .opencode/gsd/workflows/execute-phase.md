@@ -131,10 +131,10 @@ Execute each wave in sequence. Autonomous plans within a wave run in parallel.
    </objective>
 
    <execution_context>
-   @~/.config/opencode/gsd/workflows/execute-plan.md
-   @~/.config/opencode/gsd/templates/summary.md
-   @~/.config/opencode/gsd/references/checkpoints.md
-   @~/.config/opencode/gsd/references/tdd.md
+   @.opencode/gsd/workflows/execute-plan.md
+   @.opencode/gsd/templates/summary.md
+   @.opencode/gsd/references/checkpoints.md
+   @.opencode/gsd/references/tdd.md
    </execution_context>
 
    <context>

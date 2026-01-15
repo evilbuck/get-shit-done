@@ -8,4 +8,4 @@ bash: allow
 webfetch: deny
 ---
 
-@~/.config/opencode/gsd/workflows/execute-plan.md
+@.opencode/gsd/workflows/execute-plan.md
