@@ -1,0 +1,230 @@
+# AGENTS.md - Guidelines for AI Coding Agents
+
+This document provides guidelines for AI coding agents working in the `get-shit-done` repository.
+
+## Project Overview
+
+**Type:** Meta-prompting framework for Claude Code and Opencode  
+**Language:** JavaScript (Node.js) + Markdown  
+**Package Manager:** npm  
+**Node Version:** >= 16.7.0
+
+This is NOT a traditional application - it's a context engineering system consisting of:
+- A Node.js installer (`bin/install.js`)
+- Markdown-based slash commands (`commands/`)
+- Workflow definitions (`get-shit-done/workflows/`)
+- Templates (`get-shit-done/templates/`)
+- Reference documentation (`get-shit-done/references/`)
+- Agent definitions (`agents/`)
+
+## Build/Lint/Test Commands
+
+```bash
+# No build step - this is pure Markdown + minimal JS
+# No linting configured
+# No test framework configured
+
+# Install globally
+npx get-shit-done-cc --global
+
+# Install locally
+npx get-shit-done-cc --local
+
+# Custom config directory
+npx get-shit-done-cc --global --config-dir ~/.claude-custom
+```
+
+**Note:** Quality is validated through Claude execution, not automated tests.
+
+## Code Style Guidelines
+
+### JavaScript (bin/install.js)
+
+**Imports:** Node.js built-ins only - zero external dependencies
+```javascript
+const fs = require('fs');
+const path = require('path');
+const os = require('os');
+const readline = require('readline');
+```
+
+**Naming:**
+- Functions: camelCase (`installSingle`, `promptAgents`)
+- Variables: camelCase (`agentDir`, `pathPrefix`)
+- Constants: UPPER_CASE (`CODE_FILES`)
+
+**Error Handling:**
+- Validate arguments early with descriptive error messages
+- Use `process.exit(1)` for invalid arguments
+- Check file existence with `fs.existsSync()` before operations
+
+### Markdown Files
+
+**Frontmatter (YAML):**
+```yaml
+---
+phase: XX-name
+plan: NN
+type: execute
+wave: N
+depends_on: []
+files_modified: []
+autonomous: true
+---
+```
+
+**XML Task Structure:**
+```xml
+<task type="auto">
+  <name>Task N: [Name]</name>
+  <files>[exact paths]</files>
+  <action>[specific instructions, including what to avoid and WHY]</action>
+  <verify>[executable command/check]</verify>
+  <done>[measurable criteria]</done>
+</task>
+```
+
+**File Naming:**
+- Kebab-case for all Markdown files: `execute-phase.md`, `plan-format.md`
+- Phase identifiers: `XX-name` format (e.g., `01-foundation`)
+- Plan identifiers: `{phase}-{plan}` format (e.g., `01-01`)
+
+### Agent Definitions (OpenCode)
+
+**OpenCode Agent Frontmatter (YAML):**
+```yaml
+---
+description: [required] Brief description of agent purpose
+mode: [required] primary | subagent | all
+model: [optional] provider/model-id (e.g., anthropic/claude-3-5-sonnet-20241022)
+temperature: [optional] 0.0-1.0 (0.0=focused, 1.0=creative)
+maxSteps: [optional] Maximum agent iterations before text-only response
+disable: [optional] true | false
+prompt: [optional] Custom system prompt file path
+tools: [optional] Object controlling tool access
+  read: true | false
+  write: true | false
+  edit: true | false
+  bash: true | false
+  grep: true | false
+  glob: true | false
+  # ... other tools
+permission: [optional] Object controlling permissions
+  edit: allow | ask | deny
+  bash:
+    "*": allow | ask | deny
+    "git *": allow | ask | deny  # Specific command patterns
+  webfetch: allow | ask | deny
+hidden: [optional] true | false (hide from @ autocomplete)
+---
+```
+
+**Key Differences from Claude Code:**
+- No `name:` field (agent name comes from filename)
+- No `color:` field (not supported)
+- `tools:` is an object, not a comma-separated string
+- `mode:` field required (primary/subagent/all)
+- `description:` field required
+- Rich permission system for fine-grained control
+- `prompt:` references external files instead of inline content
+
+**Examples:**
+
+**GSD Executor Agent (Subagent):**
+```yaml
+---
+description: Executes GSD plans with atomic commits and deviation handling
+mode: subagent
+tools:
+  read: true
+  write: true
+  edit: true
+  bash: true
+  grep: true
+  glob: true
+---
+```
+
+**Planning Agent (Primary):**
+```yaml
+---
+description: Analysis and planning without making changes
+mode: primary
+tools:
+  read: true
+  write: false
+  edit: false
+  bash: false
+permission:
+  edit: deny
+  bash: ask
+---
+```
+
+**File Locations:**
+- Global: `~/.config/opencode/agent/`
+- Local: `.opencode/agent/`
+- Filename becomes agent name (e.g., `gsd-executor.md` → `@gsd-executor`)
+
+## Git Commit Conventions
+
+**Commit outcomes, not process.** The git log should read like a changelog.
+
+### Commit Format
+```
+{type}({phase}-{plan}): {task-name}
+
+- [Key change 1]
+- [Key change 2]
+```
+
+### Commit Types
+| Type | When to Use |
+|------|-------------|
+| `feat` | New feature/functionality |
+| `fix` | Bug fix |
+| `test` | Test-only changes (TDD RED phase) |
+| `refactor` | Code cleanup, no behavior change |
+| `docs` | Documentation changes |
+| `chore` | Config, tooling, dependencies |
+
+### What to Commit
+- Project initialization: YES
+- Task completed: YES (one per task)
+- Plan completed: YES (metadata only)
+- PLAN.md/RESEARCH.md created: NO (intermediate)
+
+## Core Principles
+
+### Plans ARE Prompts
+PLAN.md IS the prompt. Contains: Objective, Context (@file refs), Tasks, Success criteria.
+
+### Scope Control
+- **2-3 tasks per plan maximum**
+- Quality degrades beyond 50% context usage
+
+### Deviation Handling
+1. **Rule 1:** Auto-fix bugs (wrong logic, type errors, security issues)
+2. **Rule 2:** Auto-add missing critical functionality (validation, auth checks)
+3. **Rule 3:** Auto-fix blocking issues (missing deps, broken imports)
+4. **Rule 4:** ASK about architectural changes (new tables, library switches)
+
+### Checkpoint Protocol
+- `checkpoint:human-verify` (90%) - Claude automated, human confirms
+- `checkpoint:decision` (9%) - Human makes implementation choice
+- `checkpoint:human-action` (1%) - Truly unavoidable manual step
+
+**Golden rule:** If Claude CAN automate it, Claude MUST automate it.
+
+## File Reference Conventions
+
+Use @-references for context loading:
+```markdown
+<context>
+@.planning/PROJECT.md           # Project vision
+@.planning/STATE.md             # Current position
+@src/lib/db.ts                  # Existing code
+</context>
+```
+
+Only reference files genuinely needed - avoid reflexive chaining.

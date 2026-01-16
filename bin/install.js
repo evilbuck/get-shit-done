@@ -62,8 +62,8 @@ if (hasHelp) {
   console.log(`  ${yellow}Usage:${reset} npx get-shit-done-cc [options]
 
   ${yellow}Options:${reset}
-    ${cyan}-g, --global${reset}              Install globally (to Claude config directory)
-    ${cyan}-l, --local${reset}               Install locally (to ./.claude in current directory)
+    ${cyan}-g, --global${reset}              Install Claude Code globally (to ~/.claude)
+    ${cyan}-l, --local${reset}               Install Claude Code locally (to ./.claude)
     ${cyan}-c, --config-dir <path>${reset}   Specify custom Claude config directory
     ${cyan}-h, --help${reset}                Show this help message
 
@@ -80,10 +80,17 @@ if (hasHelp) {
     ${dim}# Install to current project only${reset}
     npx get-shit-done-cc --local
 
+    ${dim}# Interactive installation (choose agents and locations)${reset}
+    npx get-shit-done-cc
+
   ${yellow}Notes:${reset}
     The --config-dir option is useful when you have multiple Claude Code
     configurations (e.g., for different subscriptions). It takes priority
     over the CLAUDE_CONFIG_DIR environment variable.
+
+    When run without arguments, the installer will prompt you to select
+    which agents (Claude Code and/or Opencode) to install and where
+    (globally or locally) for each selected agent.
 `);
   process.exit(0);
 }
@@ -101,7 +108,7 @@ function expandTilde(filePath) {
 /**
  * Recursively copy directory, replacing paths in .md files
  */
-function copyWithPathReplacement(srcDir, destDir, pathPrefix) {
+function copyWithPathReplacement(srcDir, destDir, pathPrefix, isOpencode = false) {
   fs.mkdirSync(destDir, { recursive: true });
 
   const entries = fs.readdirSync(srcDir, { withFileTypes: true });
@@ -111,11 +118,20 @@ function copyWithPathReplacement(srcDir, destDir, pathPrefix) {
     const destPath = path.join(destDir, entry.name);
 
     if (entry.isDirectory()) {
-      copyWithPathReplacement(srcPath, destPath, pathPrefix);
+      copyWithPathReplacement(srcPath, destPath, pathPrefix, isOpencode);
     } else if (entry.name.endsWith('.md')) {
-      // Replace ~/.claude/ with the appropriate prefix in markdown files
+      // Replace paths in markdown files
       let content = fs.readFileSync(srcPath, 'utf8');
-      content = content.replace(/~\/\.claude\//g, pathPrefix);
+      if (isOpencode) {
+        // For opencode, replace claude paths with opencode paths
+        content = content.replace(/~\/\.claude\/get-shit-done\//g, '~/.config/opencode/gsd/');
+        content = content.replace(/~\/\.claude\/commands\//g, '~/.config/opencode/command/');
+        content = content.replace(/\.\/\.claude\/get-shit-done\//g, '.opencode/gsd/');
+        content = content.replace(/\.\/\.claude\/commands\//g, '.opencode/command/');
+      } else {
+        // For claude, replace ~/.claude/ with the appropriate prefix
+        content = content.replace(/~\/\.claude\//g, pathPrefix);
+      }
       fs.writeFileSync(destPath, content);
     } else {
       fs.copyFileSync(srcPath, destPath);
@@ -124,96 +140,168 @@ function copyWithPathReplacement(srcDir, destDir, pathPrefix) {
 }
 
 /**
- * Install to the specified directory
+ * Install multiple agents
  */
-function install(isGlobal) {
+function installMultiple(agentConfigs) {
+  for (const config of agentConfigs) {
+    installSingle(config.agent, config.isGlobal);
+  }
+
+  const agentNames = agentConfigs.map(c => c.agent === 'claude-code' ? 'Claude Code' : 'Opencode');
+  console.log(`
+  ${green}Done!${reset} Launch ${agentNames.join(' and ')} and run ${cyan}/gsd:help${reset}.
+`);
+}
+
+/**
+ * Install a single agent to the specified directory
+ */
+function installSingle(agent, isGlobal) {
   const src = path.join(__dirname, '..');
-  // Priority: explicit --config-dir arg > CLAUDE_CONFIG_DIR env var > default ~/.claude
+  const isOpencode = agent === 'opencode';
+
+  // Priority: explicit --config-dir arg > CLAUDE_CONFIG_DIR env var > default
   const configDir = expandTilde(explicitConfigDir) || expandTilde(process.env.CLAUDE_CONFIG_DIR);
-  const defaultGlobalDir = configDir || path.join(os.homedir(), '.claude');
-  const claudeDir = isGlobal
+  const defaultGlobalDir = isOpencode
+    ? path.join(os.homedir(), '.config', 'opencode')
+    : (configDir || path.join(os.homedir(), '.claude'));
+  const agentDir = isGlobal
     ? defaultGlobalDir
-    : path.join(process.cwd(), '.claude');
+    : path.join(process.cwd(), isOpencode ? '.opencode' : '.claude');
 
   const locationLabel = isGlobal
-    ? claudeDir.replace(os.homedir(), '~')
-    : claudeDir.replace(process.cwd(), '.');
+    ? agentDir.replace(os.homedir(), '~')
+    : agentDir.replace(process.cwd(), '.');
+
+  const agentName = isOpencode ? 'Opencode' : 'Claude Code';
 
   // Path prefix for file references
-  // Use actual path when CLAUDE_CONFIG_DIR is set, otherwise use ~ shorthand
   const pathPrefix = isGlobal
-    ? (configDir ? `${claudeDir}/` : '~/.claude/')
-    : './.claude/';
+    ? (isOpencode ? '~/.config/opencode/' : (configDir ? `${agentDir}/` : '~/.claude/'))
+    : (isOpencode ? './.opencode/' : './.claude/');
 
-  console.log(`  Installing to ${cyan}${locationLabel}${reset}\n`);
+  console.log(`  Installing ${agentName} to ${cyan}${locationLabel}${reset}\n`);
 
   // Create commands directory
-  const commandsDir = path.join(claudeDir, 'commands');
+  const commandsDir = path.join(agentDir, isOpencode ? 'command' : 'commands');
   fs.mkdirSync(commandsDir, { recursive: true });
 
-  // Copy commands/gsd with path replacement
-  const gsdSrc = path.join(src, 'commands', 'gsd');
-  const gsdDest = path.join(commandsDir, 'gsd');
-  copyWithPathReplacement(gsdSrc, gsdDest, pathPrefix);
-  console.log(`  ${green}✓${reset} Installed commands/gsd`);
+  // Copy appropriate commands with path replacement
+  const commandsSrc = path.join(src, 'commands', isOpencode ? 'opencode' : 'gsd');
+  const commandsDest = path.join(commandsDir, 'gsd');
+  if (fs.existsSync(commandsSrc)) {
+    copyWithPathReplacement(commandsSrc, commandsDest, pathPrefix, isOpencode);
+    console.log(`  ${green}✓${reset} Installed commands/gsd`);
+  }
 
   // Copy get-shit-done skill with path replacement
   const skillSrc = path.join(src, 'get-shit-done');
-  const skillDest = path.join(claudeDir, 'get-shit-done');
-  copyWithPathReplacement(skillSrc, skillDest, pathPrefix);
-  console.log(`  ${green}✓${reset} Installed get-shit-done`);
+  const skillDest = path.join(agentDir, isOpencode ? 'gsd' : 'get-shit-done');
+  copyWithPathReplacement(skillSrc, skillDest, pathPrefix, isOpencode);
+  console.log(`  ${green}✓${reset} Installed ${isOpencode ? 'gsd' : 'get-shit-done'}`);
 
-  // Copy agents to ~/.claude/agents (subagents must be at root level)
+  // Copy agents (subagents must be at root level)
   const agentsSrc = path.join(src, 'agents');
   if (fs.existsSync(agentsSrc)) {
-    const agentsDest = path.join(claudeDir, 'agents');
-    copyWithPathReplacement(agentsSrc, agentsDest, pathPrefix);
-    console.log(`  ${green}✓${reset} Installed agents`);
+    const agentsDest = path.join(agentDir, isOpencode ? 'agent' : 'agents');
+    copyWithPathReplacement(agentsSrc, agentsDest, pathPrefix, isOpencode);
+    console.log(`  ${green}✓${reset} Installed ${isOpencode ? 'agent' : 'agents'}`);
   }
 
   // Copy CHANGELOG.md
   const changelogSrc = path.join(src, 'CHANGELOG.md');
-  const changelogDest = path.join(claudeDir, 'get-shit-done', 'CHANGELOG.md');
+  const changelogDest = path.join(agentDir, isOpencode ? 'gsd' : 'get-shit-done', 'CHANGELOG.md');
   if (fs.existsSync(changelogSrc)) {
     fs.copyFileSync(changelogSrc, changelogDest);
     console.log(`  ${green}✓${reset} Installed CHANGELOG.md`);
   }
 
   // Write VERSION file for whats-new command
-  const versionDest = path.join(claudeDir, 'get-shit-done', 'VERSION');
+  const versionDest = path.join(agentDir, isOpencode ? 'gsd' : 'get-shit-done', 'VERSION');
   fs.writeFileSync(versionDest, pkg.version);
   console.log(`  ${green}✓${reset} Wrote VERSION (${pkg.version})`);
-
-  console.log(`
-  ${green}Done!${reset} Launch Claude Code and run ${cyan}/gsd:help${reset}.
-`);
 }
 
 /**
- * Prompt for install location
+ * Prompt for which agents to install
  */
-function promptLocation() {
+function promptAgents() {
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
   });
 
-  const configDir = expandTilde(explicitConfigDir) || expandTilde(process.env.CLAUDE_CONFIG_DIR);
-  const globalPath = configDir || path.join(os.homedir(), '.claude');
-  const globalLabel = globalPath.replace(os.homedir(), '~');
+  console.log(`  ${yellow}Which agents would you like to install?${reset}
 
-  console.log(`  ${yellow}Where would you like to install?${reset}
-
-  ${cyan}1${reset}) Global ${dim}(${globalLabel})${reset} - available in all projects
-  ${cyan}2${reset}) Local  ${dim}(./.claude)${reset} - this project only
+  ${cyan}1${reset}) Claude Code  ${dim}(~/.claude or ./.claude)${reset}
+  ${cyan}2${reset}) Opencode      ${dim}(~/.config/opencode or ./.opencode)${reset}
+  ${cyan}3${reset}) Both agents
 `);
 
-  rl.question(`  Choice ${dim}[1]${reset}: `, (answer) => {
+  rl.question(`  Choice ${dim}[3]${reset}: `, (answer) => {
     rl.close();
-    const choice = answer.trim() || '1';
-    const isGlobal = choice !== '2';
-    install(isGlobal);
+    const choice = answer.trim() || '3';
+    let selectedAgents = [];
+
+    if (choice === '1') {
+      selectedAgents = ['claude-code'];
+    } else if (choice === '2') {
+      selectedAgents = ['opencode'];
+    } else if (choice === '3') {
+      selectedAgents = ['claude-code', 'opencode'];
+    } else {
+      console.error(`  ${yellow}Invalid choice. Please select 1, 2, or 3.${reset}`);
+      process.exit(1);
+    }
+
+    promptLocationsForAgents(selectedAgents);
   });
+}
+
+/**
+ * Prompt for install locations for each selected agent
+ */
+function promptLocationsForAgents(agents) {
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+  });
+
+  let agentConfigs = [];
+  let currentIndex = 0;
+
+  function promptNext() {
+    if (currentIndex >= agents.length) {
+      rl.close();
+      installMultiple(agentConfigs);
+      return;
+    }
+
+    const agent = agents[currentIndex];
+    const isOpencode = agent === 'opencode';
+
+    const configDir = expandTilde(explicitConfigDir) || expandTilde(process.env.CLAUDE_CONFIG_DIR);
+    const globalPath = isOpencode
+      ? path.join(os.homedir(), '.config', 'opencode')
+      : (configDir || path.join(os.homedir(), '.claude'));
+    const globalLabel = globalPath.replace(os.homedir(), '~');
+
+    console.log(`\n  ${yellow}Where would you like to install ${agent}?${reset}
+
+  ${cyan}1${reset}) Global ${dim}(${globalLabel})${reset} - available in all projects
+  ${cyan}2${reset}) Local  ${dim}(./.${agent === 'opencode' ? 'opencode' : 'claude'})${reset} - this project only
+`);
+
+    rl.question(`  Choice ${dim}[1]${reset}: `, (answer) => {
+      const choice = answer.trim() || '1';
+      const isGlobal = choice !== '2';
+      agentConfigs.push({ agent, isGlobal });
+      currentIndex++;
+      promptNext();
+    });
+  }
+
+  promptNext();
 }
 
 // Main
@@ -224,9 +312,11 @@ if (hasGlobal && hasLocal) {
   console.error(`  ${yellow}Cannot use --config-dir with --local${reset}`);
   process.exit(1);
 } else if (hasGlobal) {
-  install(true);
+  // For backwards compatibility, --global installs to claude-code
+  installMultiple([{ agent: 'claude-code', isGlobal: true }]);
 } else if (hasLocal) {
-  install(false);
+  // For backwards compatibility, --local installs to claude-code
+  installMultiple([{ agent: 'claude-code', isGlobal: false }]);
 } else {
-  promptLocation();
+  promptAgents();
 }
