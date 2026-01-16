@@ -17,7 +17,7 @@
 npx get-shit-done-cc
 ```
 
-**Works on Mac, Windows, and Linux.**
+**Works on Mac, Windows, and Linux with Claude Code and Opencode.**
 
 <br>
 
@@ -75,7 +75,9 @@ People who want to describe what they want and have it built correctly — witho
 npx get-shit-done-cc
 ```
 
-That's it. Verify with `/gsd:help` inside your Claude Code interface.
+The installer will prompt you to select which agents (Claude Code and/or Opencode) to install and where to install them.
+
+That's it. Verify with `/gsd:help` inside your chosen interface(s).
 
 ### Staying Updated
 
@@ -95,11 +97,13 @@ npx get-shit-done-cc@latest
 <summary><strong>Non-interactive Install (Docker, CI, Scripts)</strong></summary>
 
 ```bash
-npx get-shit-done-cc --global   # Install to ~/.claude/
-npx get-shit-done-cc --local    # Install to ./.claude/
+npx get-shit-done-cc --global   # Install to ~/.claude/ (Claude Code)
+npx get-shit-done-cc --local    # Install to ./.claude/ (Claude Code)
 ```
 
-Use `--global` (`-g`) or `--local` (`-l`) to skip the interactive prompt.
+Use `--global` (`-g`) or `--local` (`-l`) to skip the interactive prompt and install Claude Code only.
+
+**Note:** Non-interactive flags install Claude Code by default. For Opencode or both agents, use the interactive installer.
 
 </details>
 
