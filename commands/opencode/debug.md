@@ -2,16 +2,6 @@
 description: Systematic debugging with persistent state across context resets
 agent: general
 ---
-agent: general
-  - Read
-  - Write
-  - Edit
-  - Bash
-  - Grep
-  - Glob
-  - Task
-  - AskUserQuestion
----
 
 <objective>
 Debug issues using scientific method with subagent isolation for investigation.

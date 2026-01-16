@@ -2,15 +2,6 @@
 description: Start a new milestone cycle — update PROJECT.md and route to requirements
 agent: general
 ---
-agent: general
-  - Read
-  - Write
-  - Bash
-  - AskUserQuestion
----
-description: Start a new milestone cycle — update PROJECT.md and route to requirements
-agent: general
----
 
 <objective>
 Start a new milestone by updating PROJECT.md with new goals, then routing to the requirements → roadmap cycle.
@@ -106,7 +97,7 @@ Milestone name: $ARGUMENTS (optional - will prompt if not provided)
 
    PROJECT.md updated with new goals.
 
-   ---
+    ---
 
    ## ▶ Next Up
 
@@ -124,7 +115,7 @@ Milestone name: $ARGUMENTS (optional - will prompt if not provided)
 
    <sub>`/clear` first → fresh context window</sub>
 
-   ---
+    ---
    ```
 
 </process>

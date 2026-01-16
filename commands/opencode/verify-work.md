@@ -2,17 +2,6 @@
 description: Validate built features through conversational UAT
 agent: general
 ---
-agent: general
-  - Read
-  - Bash
-  - Glob
-  - Grep
-  - Edit
-  - Write
----
-description: Validate built features through conversational UAT
-agent: general
----
 
 <objective>
 Validate built features through conversational testing with persistent state.

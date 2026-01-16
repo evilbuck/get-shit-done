@@ -2,17 +2,6 @@
 description: Execute all plans in a phase with wave-based parallelization
 agent: general
 ---
-agent: general
-  - Read
-  - Write
-  - Edit
-  - Glob
-  - Grep
-  - Bash
-  - Task
-  - TodoWrite
-  - AskUserQuestion
----
 
 <objective>
 Execute all plans in a phase using wave-based parallel execution.
@@ -103,7 +92,7 @@ After verification completes, route based on status:
 | `passed` + more phases | Route A (next phase) |
 | `passed` + last phase | Route B (milestone complete) |
 
----
+ ---
 
 **Route A: Phase verified, more phases remain**
 
@@ -112,7 +101,7 @@ After verification completes, route based on status:
 
 All {Y} plans finished. Phase goal verified.
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -122,17 +111,17 @@ All {Y} plans finished. Phase goal verified.
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 
 **Also available:**
 - `/gsd:verify-work {Z}` — manual acceptance testing before continuing
 - `/gsd:discuss-phase {Z+1}` — gather context first
 - `/gsd:research-phase {Z+1}` — investigate unknowns
 
----
+ ---
 ```
 
----
+ ---
 
 **Route B: Phase verified, milestone complete**
 
@@ -143,7 +132,7 @@ All {Y} plans finished. Phase goal verified.
 
 All {N} phases finished. Phase goals verified.
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -153,17 +142,17 @@ All {N} phases finished. Phase goals verified.
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 
 **Also available:**
 - `/gsd:verify-work` — manual acceptance testing
 - `/gsd:complete-milestone` — skip audit, archive directly
 - `/gsd:add-phase <description>` — add another phase first
 
----
+ ---
 ```
 
----
+ ---
 
 **Route C: Gaps found — need additional planning**
 
@@ -177,7 +166,7 @@ All {N} phases finished. Phase goals verified.
 
 {Extract gap summaries from VERIFICATION.md}
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -187,13 +176,13 @@ All {N} phases finished. Phase goals verified.
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 
 **Also available:**
 - `cat .planning/phases/{phase_dir}/{phase}-VERIFICATION.md` — see full report
 - `/gsd:verify-work {Z}` — manual testing before planning
 
----
+ ---
 ```
 
 After user runs `/gsd:plan-phase {Z} --gaps`:

@@ -2,8 +2,6 @@
 description: Gather context for next milestone through adaptive questioning
 agent: general
 ---
-agent: general
-agent: general
 
 <objective>
 Help you figure out what to build in the next milestone through collaborative thinking.
@@ -42,9 +40,8 @@ Output: Context gathered, then routes to /gsd:new-milestone
 </process>
 
 <success_criteria>
-
 - Project state loaded and presented
 - Previous milestone context summarized
 - Milestone scope gathered through adaptive questioning
 - Context handed off to /gsd:new-milestone
-  </success_criteria>
+</success_criteria>

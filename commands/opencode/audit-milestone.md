@@ -97,7 +97,7 @@ For each requirement in REQUIREMENTS.md mapped to this milestone:
 Create `.planning/v{version}-v{version}-MILESTONE-AUDIT.md` with:
 
 ```yaml
----
+ ---
 milestone: {version}
 audited: {timestamp}
 status: passed | gaps_found | tech_debt
@@ -118,7 +118,7 @@ tech_debt:  # Non-critical, deferred
   - phase: 03-dashboard
     items:
       - "Deferred: mobile responsive layout"
----
+ ---
 ```
 
 Plus full markdown report with tables for requirements, phases, integration, tech debt.
@@ -145,7 +145,7 @@ Route by status (see `<offer_next>`).
 
 All requirements covered. Cross-phase integration verified. E2E flows complete.
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -156,7 +156,7 @@ All requirements covered. Cross-phase integration verified. E2E flows complete.
 <sub>`/clear` first → fresh context window</sub>
 ```
 
----
+ ---
 
 **If gaps_found:**
 
@@ -182,7 +182,7 @@ All requirements covered. Cross-phase integration verified. E2E flows complete.
 {For each flow gap:}
 - **{flow name}:** breaks at {step}
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -192,14 +192,14 @@ All requirements covered. Cross-phase integration verified. E2E flows complete.
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 
 **Also available:**
 - `cat .planning/v{version}-MILESTONE-AUDIT.md` — see full report
 - `/gsd:complete-milestone {version}` — proceed anyway (accept tech debt)
 ```
 
----
+ ---
 
 **If tech_debt (no blockers but accumulated debt):**
 
@@ -220,7 +220,7 @@ All requirements met. No critical blockers. Accumulated tech debt needs review.
 
 ### Total: {N} items across {M} phases
 
----
+ ---
 
 ## ▶ Options
 
@@ -244,16 +244,3 @@ All requirements met. No critical blockers. Accumulated tech debt needs review.
 - [ ] v{version}-MILESTONE-AUDIT.md created
 - [ ] Results presented with actionable next steps
 </success_criteria>
-
-<!-- Claude Code format - commented out for conversion
-
-<!-- Claude Code format - commented out for conversion
-allowed-tools:
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - Task
-  - Write
--->
--->

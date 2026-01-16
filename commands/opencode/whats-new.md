@@ -2,8 +2,6 @@
 description: See what's new in GSD since your installed version
 agent: general
 ---
-agent: general
-agent: general
 
 <objective>
 Display changes between installed version and latest available version.
@@ -87,7 +85,7 @@ You're on the latest version.
 **Installed:** 1.4.23
 **Latest:** 1.4.26
 
----
+ ---
 
 ### Changes since your version:
 
@@ -105,7 +103,7 @@ You're on the latest version.
 ### Fixed
 - Bug in feature A
 
----
+ ---
 
 [View full changelog](https://github.com/glittercowboy/get-shit-done/blob/main/CHANGELOG.md)
 

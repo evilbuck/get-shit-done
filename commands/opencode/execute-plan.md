@@ -2,15 +2,6 @@
 description: Execute a PLAN.md file
 agent: general
 ---
-agent: general
-  - Read
-  - Glob
-  - Grep
-  - Bash
-  - Task
-  - TodoWrite
-  - AskUserQuestion
----
 
 <objective>
 Execute a single PLAN.md file by spawning the `gsd-executor` subagent.
@@ -164,7 +155,7 @@ When summaries = plans, update REQUIREMENTS.md before presenting completion:
 
 **Skip if:** REQUIREMENTS.md doesn't exist, or phase has no Requirements line in ROADMAP.md.
 
----
+ ---
 
 **Route A: More plans remain in phase**
 
@@ -176,7 +167,7 @@ Summary: .planning/phases/{phase-dir}/{phase}-{plan}-SUMMARY.md
 
 {Y} of {X} plans complete for Phase {Z}.
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -186,10 +177,10 @@ Summary: .planning/phases/{phase-dir}/{phase}-{plan}-SUMMARY.md
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 ```
 
----
+ ---
 
 **Step 3: Check milestone status (only when phase complete)**
 
@@ -200,7 +191,7 @@ Read ROADMAP.md. Find current phase number and highest phase in milestone.
 | current < highest | More phases → Route B |
 | current = highest | Milestone complete → Route C |
 
----
+ ---
 
 **Route B: Phase complete, more phases remain**
 
@@ -209,7 +200,7 @@ Read ROADMAP.md. Find current phase number and highest phase in milestone.
 
 All {Y} plans finished.
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -219,10 +210,10 @@ All {Y} plans finished.
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 ```
 
----
+ ---
 
 **Route C: Milestone complete**
 
@@ -233,7 +224,7 @@ All {Y} plans finished.
 
 All {N} phases finished.
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -241,7 +232,7 @@ All {N} phases finished.
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 ```
 </offer_next>
 

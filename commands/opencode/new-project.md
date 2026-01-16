@@ -2,14 +2,6 @@
 description: Initialize a new project with deep context gathering and PROJECT.md
 agent: general
 ---
-agent: general
-  - Read
-  - Bash
-  - Write
-  - AskUserQuestion
-description: Initialize a new project with deep context gathering and PROJECT.md
-agent: general
----
 
 <objective>
 
@@ -210,7 +202,7 @@ Initialize with any decisions made during questioning:
 **Last updated footer:**
 
 ```markdown
----
+ ---
 *Last updated: [date] after initialization*
 ```
 
@@ -297,7 +289,7 @@ Project initialized:
 - Config: .planning/config.json (mode: [chosen mode])
 [If .planning/codebase/ exists:] - Codebase: .planning/codebase/ (7 documents)
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -315,7 +307,7 @@ Skip research, define requirements from what you know, then create roadmap.
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 ```
 
 </step>

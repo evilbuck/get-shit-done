@@ -2,16 +2,6 @@
 description: Create detailed execution plan for a phase (PLAN.md)
 agent: general
 ---
-agent: general
-  - Read
-  - Bash
-  - Write
-  - Glob
-  - Grep
-  - AskUserQuestion
-  - WebFetch
-  - mcp__context7__*
----
 
 <objective>
 Create executable phase prompt with discovery, context injection, and task breakdown.

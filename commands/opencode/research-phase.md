@@ -2,16 +2,6 @@
 description: Research how to implement a phase before planning
 agent: general
 ---
-agent: general
-  - Read
-  - Bash
-  - Glob
-  - Grep
-  - Write
-  - WebFetch
-  - WebSearch
-  - mcp__context7__*
----
 
 <objective>
 Comprehensive research on HOW to implement a phase before planning.

@@ -2,8 +2,6 @@
 description: Gather phase context through adaptive questioning before planning
 agent: general
 ---
-agent: general
-agent: general
 
 <objective>
 Help the user articulate their vision for a phase through collaborative thinking.
@@ -53,7 +51,6 @@ User is the visionary, you are the builder:
 </process>
 
 <success_criteria>
-
 - Phase validated against roadmap
 - Vision gathered through collaborative thinking (not interrogation)
 - CONTEXT.md captures: how it works, what's essential

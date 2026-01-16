@@ -2,12 +2,6 @@
 description: Analyze codebase with parallel Explore agents to produce .planning/codebase/ documents
 agent: general
 ---
-  - Read
-  - Bash
-  - Glob
-  - Grep
-  - Write
-  - Task
 
 <objective>
 Analyze existing codebase using parallel Explore agents to produce structured codebase documents.

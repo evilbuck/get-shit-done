@@ -2,17 +2,6 @@
 description: Create phases to close all gaps identified by milestone audit
 agent: general
 ---
-agent: general
-  - Read
-  - Write
-  - Bash
-  - Glob
-  - Grep
-  - AskUserQuestion
----
-description: Create phases to close all gaps identified by milestone audit
-agent: general
----
 
 <objective>
 Create all phases necessary to close gaps identified by `/gsd:audit-milestone`.
@@ -134,7 +123,7 @@ These gaps are optional. Include them?
 - {gap description}
 - {gap description}
 
----
+ ---
 
 Create these {X} phases? (yes / adjust / defer all optional)
 ```
@@ -176,7 +165,7 @@ git commit -m "docs(roadmap): add gap closure phases {N}-{M}"
 **Phases added:** {N} - {M}
 **Gaps addressed:** {count} requirements, {count} integration, {count} flows
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -186,13 +175,13 @@ git commit -m "docs(roadmap): add gap closure phases {N}-{M}"
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 
 **Also available:**
 - `/gsd:execute-phase {N}` — if plans already exist
 - `cat .planning/ROADMAP.md` — see updated roadmap
 
----
+ ---
 
 **After all gap phases complete:**
 

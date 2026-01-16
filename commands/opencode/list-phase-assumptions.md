@@ -2,15 +2,6 @@
 description: Surface Claude's assumptions about a phase approach before planning
 agent: general
 ---
-agent: general
-  - Read
-  - Bash
-  - Grep
-  - Glob
----
-description: Surface Claude's assumptions about a phase approach before planning
-agent: general
----
 
 <objective>
 Analyze a phase and present Claude's assumptions about technical approach, implementation order, scope boundaries, risk areas, and dependencies.

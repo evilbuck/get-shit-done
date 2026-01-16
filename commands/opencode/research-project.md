@@ -2,17 +2,6 @@
 description: Research domain ecosystem before creating roadmap
 agent: general
 ---
-agent: general
-  - Read
-  - Write
-  - Bash
-  - Glob
-  - Grep
-  - Task
-  - WebFetch
-  - WebSearch
-  - mcp__context7__*
----
 
 <objective>
 Comprehensive domain research before roadmap creation.
@@ -93,7 +82,7 @@ Research complete:
 - Architecture: .planning/research/ARCHITECTURE.md
 - Pitfalls: .planning/research/PITFALLS.md
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -105,7 +94,7 @@ Research complete:
 
 **Flow:** research-project → **define-requirements** → create-roadmap
 
----
+ ---
 ```
 </step>
 

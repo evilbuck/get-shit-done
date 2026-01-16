@@ -2,16 +2,6 @@
 description: Create roadmap with phases for the project
 agent: general
 ---
-agent: general
-  - Read
-  - Write
-  - Bash
-  - AskUserQuestion
-  - Glob
----
-description: Create roadmap with phases for the project
-agent: general
----
 
 <objective>
 Create project roadmap with phase breakdown.
@@ -92,7 +82,7 @@ Roadmap created:
 - State: .planning/STATE.md
 - [N] phases defined
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -102,14 +92,14 @@ Roadmap created:
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 
 **Also available:**
 - `/gsd:discuss-phase 1` — gather context first
 - `/gsd:research-phase 1` — investigate unknowns
 - Review roadmap
 
----
+ ---
 ```
 </step>
 

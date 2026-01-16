@@ -2,16 +2,6 @@
 description: Define what "done" looks like with checkable requirements
 agent: general
 ---
-agent: general
-  - Read
-  - Write
-  - Bash
-  - Glob
-  - AskUserQuestion
----
-description: Define what "done" looks like with checkable requirements
-agent: general
----
 
 <objective>
 Define concrete, checkable requirements for v1.
@@ -98,7 +88,7 @@ Requirements defined:
 - v2 scope: [X] requirements deferred
 - Out of scope: [Y] requirements excluded
 
----
+ ---
 
 ## ▶ Next Up
 
@@ -108,7 +98,7 @@ Requirements defined:
 
 <sub>`/clear` first → fresh context window</sub>
 
----
+ ---
 ```
 </step>
 

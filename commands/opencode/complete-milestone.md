@@ -2,18 +2,9 @@
 description: Archive completed milestone and prepare for next version
 agent: general
 ---
-agent: general
-type: prompt
-  - Read
-  - Write
-  - Bash
----
-description: Archive completed milestone and prepare for next version
-agent: general
----
 
 <objective>
-Mark milestone {{version}} complete, archive to milestones/, and update ROADMAP.md and REQUIREMENTS.md.
+Mark milestone $ARGUMENTS complete, archive to milestones/, and update ROADMAP.md and REQUIREMENTS.md.
 
 Purpose: Create historical record of shipped version, archive milestone artifacts (roadmap + requirements), and prepare for next milestone.
 Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tagged.
@@ -35,7 +26,7 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
 
 **User input:**
 
-- Version: {{version}} (e.g., "1.0", "1.1", "2.0")
+- Version: $ARGUMENTS (e.g., "1.0", "1.1", "2.0")
   </context>
 
 <process>
@@ -44,7 +35,7 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
 
 0. **Check for audit:**
 
-   - Look for `.planning/v{{version}}-MILESTONE-AUDIT.md`
+   - Look for `.planning/v$ARGUMENTS-MILESTONE-AUDIT.md`
    - If missing or stale: recommend `/gsd:audit-milestone` first
    - If audit status is `gaps_found`: recommend `/gsd:plan-milestone-gaps` first
    - If audit status is `passed`: proceed to step 1
@@ -52,7 +43,7 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
    ```markdown
    ## Pre-flight Check
 
-   {If no v{{version}}-MILESTONE-AUDIT.md:}
+   {If no v$ARGUMENTS-MILESTONE-AUDIT.md:}
    ⚠ No milestone audit found. Run `/gsd:audit-milestone` first to verify
    requirements coverage, cross-phase integration, and E2E flows.
 
@@ -85,14 +76,14 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
 
 4. **Archive milestone:**
 
-   - Create `.planning/milestones/v{{version}}-ROADMAP.md`
+   - Create `.planning/milestones/v$ARGUMENTS-ROADMAP.md`
    - Extract full phase details from ROADMAP.md
    - Fill milestone-archive.md template
    - Update ROADMAP.md to one-line summary with link
 
 5. **Archive requirements:**
 
-   - Create `.planning/milestones/v{{version}}-REQUIREMENTS.md`
+   - Create `.planning/milestones/v$ARGUMENTS-REQUIREMENTS.md`
    - Mark all v1 requirements as complete (checkboxes checked)
    - Note requirement outcomes (validated, adjusted, dropped)
    - Delete `.planning/REQUIREMENTS.md` (fresh one created for next milestone)
@@ -106,8 +97,8 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
 7. **Commit and tag:**
 
    - Stage: MILESTONES.md, PROJECT.md, ROADMAP.md, STATE.md, archive files
-   - Commit: `chore: archive v{{version}} milestone`
-   - Tag: `git tag -a v{{version}} -m "[milestone summary]"`
+   - Commit: `chore: archive v$ARGUMENTS milestone`
+   - Tag: `git tag -a v$ARGUMENTS -m "[milestone summary]"`
    - Ask about pushing tag
 
 8. **Offer next steps:**
@@ -118,12 +109,12 @@ Output: Milestone archived (roadmap + requirements), PROJECT.md evolved, git tag
 
 <success_criteria>
 
-- Milestone archived to `.planning/milestones/v{{version}}-ROADMAP.md`
-- Requirements archived to `.planning/milestones/v{{version}}-REQUIREMENTS.md`
+- Milestone archived to `.planning/milestones/v$ARGUMENTS-ROADMAP.md`
+- Requirements archived to `.planning/milestones/v$ARGUMENTS-REQUIREMENTS.md`
 - `.planning/REQUIREMENTS.md` deleted (fresh for next milestone)
 - ROADMAP.md collapsed to one-line entry
 - PROJECT.md updated with current state
-- Git tag v{{version}} created
+- Git tag v$ARGUMENTS created
 - Commit successful
 - User knows next steps (including need for fresh requirements)
   </success_criteria>
