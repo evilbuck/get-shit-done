@@ -123,11 +123,11 @@ function copyWithPathReplacement(srcDir, destDir, pathPrefix, isOpencode = false
       // Replace paths in markdown files
       let content = fs.readFileSync(srcPath, 'utf8');
       if (isOpencode) {
-        // For opencode, replace claude paths with opencode paths
-        content = content.replace(/~\/\.claude\/get-shit-done\//g, '~/.config/opencode/gsd/');
-        content = content.replace(/~\/\.claude\/commands\//g, '~/.config/opencode/command/');
-        content = content.replace(/\.\/\.claude\/get-shit-done\//g, '.opencode/gsd/');
-        content = content.replace(/\.\/\.claude\/commands\//g, '.opencode/command/');
+        // For opencode, replace claude paths with opencode paths using pathPrefix
+        // pathPrefix is either '~/.config/opencode/' (global) or './.opencode/' (local)
+        content = content.replace(/~\/\.claude\/get-shit-done\//g, `${pathPrefix}gsd/`);
+        content = content.replace(/~\/\.claude\/commands\//g, `${pathPrefix}command/`);
+        content = content.replace(/~\/\.claude\//g, pathPrefix);
       } else {
         // For claude, replace ~/.claude/ with the appropriate prefix
         content = content.replace(/~\/\.claude\//g, pathPrefix);
@@ -220,6 +220,40 @@ function installSingle(agent, isGlobal) {
   const versionDest = path.join(agentDir, isOpencode ? 'gsd' : 'get-shit-done', 'VERSION');
   fs.writeFileSync(versionDest, pkg.version);
   console.log(`  ${green}✓${reset} Wrote VERSION (${pkg.version})`);
+
+  // For OpenCode: copy plugin and tool TypeScript files
+  if (isOpencode) {
+    const pluginSrc = path.join(src, 'opencode', 'plugin');
+    const toolSrc = path.join(src, 'opencode', 'tool');
+
+    if (fs.existsSync(pluginSrc)) {
+      const pluginDest = path.join(agentDir, 'plugin');
+      fs.mkdirSync(pluginDest, { recursive: true });
+      const pluginFiles = fs.readdirSync(pluginSrc);
+      for (const file of pluginFiles) {
+        fs.copyFileSync(path.join(pluginSrc, file), path.join(pluginDest, file));
+      }
+      console.log(`  ${green}✓${reset} Installed plugin`);
+    }
+
+    if (fs.existsSync(toolSrc)) {
+      const toolDest = path.join(agentDir, 'tool');
+      fs.mkdirSync(toolDest, { recursive: true });
+      const toolFiles = fs.readdirSync(toolSrc);
+      for (const file of toolFiles) {
+        fs.copyFileSync(path.join(toolSrc, file), path.join(toolDest, file));
+      }
+      console.log(`  ${green}✓${reset} Installed tool`);
+    }
+
+    // Copy commands to gsd/commands/gsd for plugin to find them
+    const pluginCommandsDest = path.join(agentDir, 'gsd', 'commands', 'gsd');
+    if (fs.existsSync(commandsDest)) {
+      fs.mkdirSync(path.join(agentDir, 'gsd', 'commands'), { recursive: true });
+      copyWithPathReplacement(commandsDest, pluginCommandsDest, pathPrefix, isOpencode);
+      console.log(`  ${green}✓${reset} Installed gsd/commands/gsd (for plugin)`);
+    }
+  }
 }
 
 /**

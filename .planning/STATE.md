@@ -2,29 +2,25 @@
 
 ## Project Summary
 
-**Building:** Brownfield support for GSD - `/gsd:map-codebase` workflow that analyzes existing codebases using parallel Explore agents, producing structured `.planning/codebase/` documents.
+**Building:** Local install support for OpenCode - refactor commands to work with both global (`~/.config/opencode/`) and local (`.opencode/`) installations.
 
 **Core requirements:**
-- `/gsd:map-codebase` produces useful codebase documents from any codebase
-- Documents are focused (<100 lines each) and easy to update incrementally
-- `/gsd:new-project` detects existing code and offers mapping
-- `/gsd:plan-phase` loads relevant codebase context automatically
-- Codebase map updates after plan execution
+- OpenCode commands work with local `.opencode/` installs
+- Installer correctly replaces paths based on install location
+- No hardcoded global paths in OpenCode commands
 
 **Constraints:**
-- Explore agents required for initial mapping
-- Each codebase map file must stay under ~100 lines
-- Only load relevant codebase sections into phase planning
+- Must maintain backward compatibility with global installs
 - Follow existing GSD command/workflow/template patterns
 
 ## Current Position
 
-Phase: 12 of 12 (Changelog & Update Awareness)
-Plan: 2 of 3 in current phase (12-02 may be running in parallel)
-Status: In progress
-Last activity: 2026-01-14 - Completed 12-03-PLAN.md
+Phase: 1 of 1 (Local Install Support)
+Plan: In progress
+Status: Active
+Last activity: 2026-01-17 - Fixed installer path replacement for OpenCode
 
-Progress: █████████████████████░░░ 25/27 plans (~93%)
+Progress: ██████████░░░░░░░░░░░░░░ ~40%
 
 ## Performance Metrics
 
@@ -79,7 +75,7 @@ Progress: █████████████████████░░�
 
 ### Deferred Issues
 
-None yet.
+- **12-02: Publish command update** - Add changelog generation to gsd-publish-version.md (deferred 2026-01-17, pick up in future milestone)
 
 ### Blockers/Concerns Carried Forward
 
@@ -106,6 +102,7 @@ Drift notes: None
 
 ## Session Continuity
 
-Last session: 2026-01-14
-Stopped at: Completed 12-03-PLAN.md
+Last session: 2026-01-17
+Stopped at: Deferred 12-02, milestone work paused
 Resume file: None
+Note: Remaining brownfield work (Phases 1-3) and 12-02 tabled for future milestone
